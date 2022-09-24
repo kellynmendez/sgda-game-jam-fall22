@@ -22,7 +22,7 @@ public class PlayerAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Z) && canAttack && playerMov.State() == PlayerMovement.PlayerState.FreeRoam)
+        if (Input.GetKey(KeyCode.Z) && canAttack && playerMov.GetState() == PlayerMovement.PlayerState.FreeRoam)
         {
             canAttack = false;
             StartCoroutine(CooldownTimer(cooldownDuration));
