@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f5e7d6a5e2af3a2488bc106a99c825fb
+guid: f6a0452e6fd76be4299e2744a8a90752
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -116,43 +116,85 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: raccoon_walk_side_0
+      name: FannySwing_Smear_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 96
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01dc2a94e49315549816152ffeecccd9
+      internalID: -555198676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FannySwing_Smear_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fff0352c74a149a48891713491eab6b4
+      internalID: -177421531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FannySwing_Smear_2
       rect:
         serializedVersion: 2
         x: 0
         y: 32
         width: 32
         height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1d879ee078b358d46a2a9b2e5569e8ea
-      internalID: 1492604081
+      spriteID: 6918e582db6e5874b89a56338da01b65
+      internalID: -1064469884
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: raccoon_walk_side_1
+      name: FannySwing_Smear_3
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 32
         height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f2fe0a6a1e88c61498881c2aefbefaa6
-      internalID: 1376130569
+      spriteID: 5417f12400b436245915fac5ae208d14
+      internalID: -1357109038
       vertices: []
       indices: 
       edges: []
@@ -168,8 +210,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      raccoon_walk_side_1: 1376130569
-      raccoon_walk_side_0: 1492604081
+      FannySwing_Smear_2: -1064469884
+      FannySwing_Smear_1: -177421531
+      FannySwing_Smear_0: -555198676
+      FannySwing_Smear_3: -1357109038
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

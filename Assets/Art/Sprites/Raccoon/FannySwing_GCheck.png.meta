@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f5e7d6a5e2af3a2488bc106a99c825fb
+guid: 7ef3bac9eaa92234ca774eec3e00aea2
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -116,13 +116,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: raccoon_walk_side_0
+      name: FannySwing_GCheck_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 32
-        width: 32
-        height: 32
+        y: 75
+        width: 30
+        height: 25
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -130,20 +130,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1d879ee078b358d46a2a9b2e5569e8ea
-      internalID: 1492604081
+      spriteID: dd7541685b9e13440b8ccd52c23dddbe
+      internalID: 1511111952
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: raccoon_walk_side_1
+      name: FannySwing_GCheck_1
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 32
-        height: 32
+        y: 50
+        width: 30
+        height: 25
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -151,8 +151,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f2fe0a6a1e88c61498881c2aefbefaa6
-      internalID: 1376130569
+      spriteID: 585e4bd2e6646624284127903557afa0
+      internalID: -1685799362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FannySwing_GCheck_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 25
+        width: 30
+        height: 25
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe1cc84476bba8e419490e73949b19f2
+      internalID: -845340952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FannySwing_GCheck_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 30
+        height: 25
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f7c9b6beff4b0d448410f3bdda65ab5
+      internalID: 151479171
       vertices: []
       indices: 
       edges: []
@@ -168,8 +210,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      raccoon_walk_side_1: 1376130569
-      raccoon_walk_side_0: 1492604081
+      FannySwing_GCheck_2: -845340952
+      FannySwing_GCheck_3: 151479171
+      FannySwing_GCheck_1: -1685799362
+      FannySwing_GCheck_0: 1511111952
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
