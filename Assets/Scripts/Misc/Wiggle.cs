@@ -11,7 +11,7 @@ public class Wiggle : MonoBehaviour
     public float yShakeRate = 0.8f;
 
     float thetaX = 0;
-    float thetaY = 0;
+    float thetaY = 90;
 
     Vector3 minX = Vector3.zero;
     Vector3 maxX = Vector3.zero;
