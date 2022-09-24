@@ -25,7 +25,8 @@ public class TrashParticles : MonoBehaviour
         {
             ParticleSystem.Particle p = _particles[i];
             p.remainingLifetime = 0;
-            // 
+            ScoreManager.IncreaseScore(1);
+            Debug.Log(ScoreManager.score);
             _particles[i] = p;
         }
 
