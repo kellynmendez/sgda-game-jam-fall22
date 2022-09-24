@@ -601,7 +601,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -623,7 +623,7 @@ GameObject:
   - component: {fileID: 3095708666343068920}
   - component: {fileID: 3095708666343068923}
   - component: {fileID: 6105894987492174576}
-  - component: {fileID: 1566428912692018535}
+  - component: {fileID: 118358260320639868}
   - component: {fileID: 788585062}
   m_Layer: 6
   m_Name: Player
@@ -701,7 +701,7 @@ MonoBehaviour:
   range: 1
   attackDuration: 0.1
   cooldownDuration: 0.1
---- !u!114 &1566428912692018535
+--- !u!114 &118358260320639868
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -710,9 +710,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 3095708666343068805}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6859d5beee2cc534287dba7c9276b26b, type: 3}
+  m_Script: {fileID: 11500000, guid: d7c6e1ee216ff8e49850a66509804b70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _visualsToDeactivate: {fileID: 319867217108693306}
+  _field: {fileID: 1863883424}
 --- !u!61 &788585062
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -723,7 +725,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

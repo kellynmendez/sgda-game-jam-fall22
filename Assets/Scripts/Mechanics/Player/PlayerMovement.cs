@@ -17,11 +17,13 @@ public class PlayerMovement : MonoBehaviour
 
     bool isDigging = false;
     PlayerState state = PlayerState.FreeRoam;
+    HealthManager _healthMgr;
 
     public enum PlayerState
     {
         FreeRoam = 0,
-        TrashLocked = 1
+        TrashLocked = 1,
+        Dead = 2
     }
 
     // Start is called before the first frame update
@@ -29,15 +31,21 @@ public class PlayerMovement : MonoBehaviour
     {
         dragCoefficent = acceleration/maxVelocity;
         body = GetComponent<Rigidbody2D>();
+        _healthMgr = GetComponent<HealthManager>();
     }
 
     private void FixedUpdate()
     {
-        if(state == PlayerState.FreeRoam){
-            dragCoefficent = acceleration / maxVelocity;
-            velocity.x = velocity.x + (appliedAccelerationX - velocity.x * dragCoefficent) * Time.fixedDeltaTime;
-            velocity.y = velocity.y + (appliedAccelerationY - velocity.y * dragCoefficent) * Time.fixedDeltaTime;
-            body.velocity = velocity;
+        // If player is not dead, then it can move
+        if (state != PlayerState.Dead)
+        {
+            if (state == PlayerState.FreeRoam)
+            {
+                dragCoefficent = acceleration / maxVelocity;
+                velocity.x = velocity.x + (appliedAccelerationX - velocity.x * dragCoefficent) * Time.fixedDeltaTime;
+                velocity.y = velocity.y + (appliedAccelerationY - velocity.y * dragCoefficent) * Time.fixedDeltaTime;
+                body.velocity = velocity;
+            }
         }
         
     }
@@ -45,17 +53,29 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (state == PlayerState.FreeRoam) {
-            appliedAccelerationX = 0f;
-            appliedAccelerationY = 0f;
-            if (Input.GetKey(KeyCode.LeftArrow))
-                appliedAccelerationX -= acceleration;
-            if (Input.GetKey(KeyCode.RightArrow))
-                appliedAccelerationX += acceleration;
-            if (Input.GetKey(KeyCode.DownArrow))
-                appliedAccelerationY -= acceleration;
-            if (Input.GetKey(KeyCode.UpArrow))
-                appliedAccelerationY += acceleration;
+        // If player is not dead, then it can move
+        if (state != PlayerState.Dead)
+        {
+            if (_healthMgr.IsPlayerDead())
+            {
+                state = PlayerState.Dead;
+            }
+            else
+            {
+                if (state == PlayerState.FreeRoam) {
+                appliedAccelerationX = 0f;
+                appliedAccelerationY = 0f;
+                if (Input.GetKey(KeyCode.LeftArrow))
+                    appliedAccelerationX -= acceleration;
+                if (Input.GetKey(KeyCode.RightArrow))
+                    appliedAccelerationX += acceleration;
+                if (Input.GetKey(KeyCode.DownArrow))
+                    appliedAccelerationY -= acceleration;
+                if (Input.GetKey(KeyCode.UpArrow))
+                    appliedAccelerationY += acceleration;
+                }
+            }
+            
         }
     }
 
@@ -69,7 +89,7 @@ public class PlayerMovement : MonoBehaviour
         velocity += newVelocity;
     }
 
-    public PlayerState State()
+    public PlayerState GetState()
     {
         return state;
     }

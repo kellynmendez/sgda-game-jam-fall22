@@ -6,6 +6,7 @@ public class RatParticles : MonoBehaviour
 {
     [SerializeField] PlayerMovement _player;
 
+    HealthManager _healthMngr;
     ParticleSystem ps;
 
     List<ParticleSystem.Particle> _particles = new List<ParticleSystem.Particle>();
@@ -14,6 +15,7 @@ public class RatParticles : MonoBehaviour
     {
         ps = transform.GetComponent<ParticleSystem>();
         _player = FindObjectOfType<PlayerMovement>();
+        _healthMngr = _player.GetComponent<HealthManager>();
         GetComponent<ParticleSystem>().trigger.SetCollider(0, _player.gameObject.transform);
     }
 
@@ -25,7 +27,7 @@ public class RatParticles : MonoBehaviour
         {
             ParticleSystem.Particle p = _particles[i];
             p.remainingLifetime = 0;
-            
+            _healthMngr.DecreaseHealth(1);
             Debug.Log("RAT EXPLODE!!!!!! ");
             _particles[i] = p;
         }
