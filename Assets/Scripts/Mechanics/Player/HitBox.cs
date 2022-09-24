@@ -20,7 +20,6 @@ public class HitBox : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Hit");
         GameObject cObject = collision.gameObject;
         if (cObject.tag == "Rat" || cObject.tag == "Destructible")
         {
