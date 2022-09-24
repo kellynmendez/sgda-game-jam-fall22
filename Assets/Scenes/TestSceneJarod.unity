@@ -974,5 +974,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7466820214107338038, guid: e3280f0a44b3c464ab918f2037aeac69, type: 3}
+      propertyPath: meleeAttack
+      value: 
+      objectReference: {fileID: 6380405823749342074, guid: bd742ffb7f0465c439a509949355340c, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3280f0a44b3c464ab918f2037aeac69, type: 3}
