@@ -34,7 +34,6 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         appliedAccelerationX = 0f;
         appliedAccelerationY = 0f;
         if(Input.GetKey(KeyCode.LeftArrow))
