@@ -15,11 +15,7 @@ public class PlayerMovement : MonoBehaviour
     float appliedAccelerationX = 0f;
     float appliedAccelerationY = 0f;
 
-    void awake()
-    {
-        GameManager.player = this;
-    }
-
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -29,22 +25,25 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate() 
     {
+        dragCoefficent = acceleration/maxVelocity;
         velocity.x = velocity.x + (appliedAccelerationX - velocity.x*dragCoefficent)*Time.fixedDeltaTime;
+        velocity.y = velocity.y + (appliedAccelerationY - velocity.y*dragCoefficent)*Time.fixedDeltaTime;
         body.velocity = velocity;
     }
 
     // Update is called once per frame
     void Update()
     {
-        /*dragCoefficent = acceleration/maxVelocity;
-        gravity = -2*jumpHeight/(jumpDuration*jumpDuration);
-        jumpForce = 2*jumpHeight/jumpDuration;*/
-
         appliedAccelerationX = 0f;
+        appliedAccelerationY = 0f;
         if(Input.GetKey(KeyCode.LeftArrow))
             appliedAccelerationX -= acceleration;
         if(Input.GetKey(KeyCode.RightArrow))
             appliedAccelerationX += acceleration;
+        if(Input.GetKey(KeyCode.DownArrow))
+            appliedAccelerationY -= acceleration;
+        if(Input.GetKey(KeyCode.UpArrow))
+            appliedAccelerationY += acceleration;
     }
 
     public void applyVelocity(Vector3 newVelocity){
