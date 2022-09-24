@@ -15,7 +15,15 @@ public class PlayerMovement : MonoBehaviour
     float appliedAccelerationX = 0f;
     float appliedAccelerationY = 0f;
 
-    
+    bool isDigging = false;
+    PlayerState state = PlayerState.FreeRoam;
+
+    public enum PlayerState
+    {
+        FreeRoam = 0,
+        TrashLocked = 1
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,30 +31,82 @@ public class PlayerMovement : MonoBehaviour
         body = GetComponent<Rigidbody2D>();
     }
 
-    private void FixedUpdate() 
+    private void FixedUpdate()
     {
-        dragCoefficent = acceleration/maxVelocity;
-        velocity.x = velocity.x + (appliedAccelerationX - velocity.x*dragCoefficent)*Time.fixedDeltaTime;
-        velocity.y = velocity.y + (appliedAccelerationY - velocity.y*dragCoefficent)*Time.fixedDeltaTime;
-        body.velocity = velocity;
+        if(state == PlayerState.FreeRoam){
+            dragCoefficent = acceleration / maxVelocity;
+            velocity.x = velocity.x + (appliedAccelerationX - velocity.x * dragCoefficent) * Time.fixedDeltaTime;
+            velocity.y = velocity.y + (appliedAccelerationY - velocity.y * dragCoefficent) * Time.fixedDeltaTime;
+            body.velocity = velocity;
+        }
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        appliedAccelerationX = 0f;
-        appliedAccelerationY = 0f;
-        if(Input.GetKey(KeyCode.LeftArrow))
-            appliedAccelerationX -= acceleration;
-        if(Input.GetKey(KeyCode.RightArrow))
-            appliedAccelerationX += acceleration;
-        if(Input.GetKey(KeyCode.DownArrow))
-            appliedAccelerationY -= acceleration;
-        if(Input.GetKey(KeyCode.UpArrow))
-            appliedAccelerationY += acceleration;
+        if (state == PlayerState.FreeRoam) {
+            appliedAccelerationX = 0f;
+            appliedAccelerationY = 0f;
+            if (Input.GetKey(KeyCode.LeftArrow))
+                appliedAccelerationX -= acceleration;
+            if (Input.GetKey(KeyCode.RightArrow))
+                appliedAccelerationX += acceleration;
+            if (Input.GetKey(KeyCode.DownArrow))
+                appliedAccelerationY -= acceleration;
+            if (Input.GetKey(KeyCode.UpArrow))
+                appliedAccelerationY += acceleration;
+        }
     }
 
-    public void applyVelocity(Vector3 newVelocity){
+    public void TrashLock(TrashBin trash, float waitTime)
+    {
+        state = PlayerState.TrashLocked;
+        StartCoroutine(MoveToTrash(trash, 0.05f, waitTime));
+    }
+
+    public void ApplyVelocity(Vector3 newVelocity){
         velocity += newVelocity;
+    }
+
+    public PlayerState State()
+    {
+        return state;
+    }
+
+    IEnumerator MoveToTrash(TrashBin trash, float travelTime, float waitTime)
+    {
+        Vector3 oldPosition = transform.position;
+        float elapsed = 0;
+        while (elapsed < travelTime && Input.GetKey(KeyCode.X)){
+            transform.position = Vector3.Lerp(oldPosition, trash.transform.position, elapsed / travelTime);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        if (Input.GetKey(KeyCode.X)){
+            StartCoroutine(DigTrash(trash, waitTime));
+        }
+        else{
+            state = PlayerState.FreeRoam;
+            trash.Interupt();
+        }
+    }
+
+    IEnumerator DigTrash(TrashBin trash, float waitTime)
+    {
+        isDigging = true;
+        trash.EmptyBin();
+        while(waitTime > 0 && Input.GetKey(KeyCode.X)){
+            waitTime -= Time.deltaTime;
+            yield return null;
+        }
+
+        isDigging = false;
+        state = PlayerState.FreeRoam;
+
+        if (!Input.GetKey(KeyCode.X))
+            trash.Interupt();
+        
     }
 }
