@@ -34,9 +34,6 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*dragCoefficent = acceleration/maxVelocity;
-        gravity = -2*jumpHeight/(jumpDuration*jumpDuration);
-        jumpForce = 2*jumpHeight/jumpDuration;*/
 
         appliedAccelerationX = 0f;
         appliedAccelerationY = 0f;
@@ -44,9 +41,9 @@ public class PlayerMovement : MonoBehaviour
             appliedAccelerationX -= acceleration;
         if(Input.GetKey(KeyCode.RightArrow))
             appliedAccelerationX += acceleration;
-        if(Input.GetKey(KeyCode.UpArrow))
-            appliedAccelerationY -= acceleration;
         if(Input.GetKey(KeyCode.DownArrow))
+            appliedAccelerationY -= acceleration;
+        if(Input.GetKey(KeyCode.UpArrow))
             appliedAccelerationY += acceleration;
     }
 
