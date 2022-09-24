@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class RatEnemyAI : MonoBehaviour
+public class RatEnemy : MonoBehaviour
 {
     private Transform _target;
     private NavMeshAgent _agent;
