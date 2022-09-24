@@ -95,10 +95,11 @@ GameObject:
   - component: {fileID: 3095708666343068922}
   - component: {fileID: 3095708666343068920}
   - component: {fileID: 3095708666343068923}
+  - component: {fileID: 6105894987492174576}
   - component: {fileID: 1566428912692018535}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -155,6 +156,21 @@ MonoBehaviour:
   maxVelocity: 12.5
   acceleration: 90
   velocity: {x: 0, y: 0, z: 0}
+--- !u!114 &6105894987492174576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3095708666343068805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1c5980bd51d4954686e5e387f77414c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meleeAttack: {fileID: 6380405823749342074, guid: bd742ffb7f0465c439a509949355340c, type: 3}
+  range: 1
+  attackDuration: 0.1
 --- !u!114 &1566428912692018535
 MonoBehaviour:
   m_ObjectHideFlags: 0
