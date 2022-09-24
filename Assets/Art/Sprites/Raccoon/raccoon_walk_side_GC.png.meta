@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f5e7d6a5e2af3a2488bc106a99c825fb
+guid: fbebe066800a2bc43bd5fb8bf920a992
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -116,7 +116,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: raccoon_walk_side_0
+      name: raccoon_walk_side_GC_0
       rect:
         serializedVersion: 2
         x: 0
@@ -130,14 +130,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1d879ee078b358d46a2a9b2e5569e8ea
-      internalID: 1492604081
+      spriteID: f81a28031178e4b45a84fd2dcc97ff62
+      internalID: -1624474481
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: raccoon_walk_side_1
+      name: raccoon_walk_side_GC_1
       rect:
         serializedVersion: 2
         x: 0
@@ -151,8 +151,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f2fe0a6a1e88c61498881c2aefbefaa6
-      internalID: 1376130569
+      spriteID: c8d04342e30b9874cb854dfb9488c07d
+      internalID: 1386397447
       vertices: []
       indices: 
       edges: []
@@ -168,8 +168,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      raccoon_walk_side_1: 1376130569
-      raccoon_walk_side_0: 1492604081
+      raccoon_walk_side_GC_1: 1386397447
+      raccoon_walk_side_GC_0: -1624474481
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
