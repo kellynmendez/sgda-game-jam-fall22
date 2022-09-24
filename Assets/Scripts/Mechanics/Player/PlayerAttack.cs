@@ -8,6 +8,8 @@ public class PlayerAttack : MonoBehaviour
     public GameObject meleeAttack;
     public float range = 1;
     public float attackDuration = 0.1f;
+    public float cooldownDuration = 0.1f;
+    bool canAttack = true;
 
     // positive x = right, negative x = left, positive y = up, negative y = down
     Vector3 direction = new Vector3(1, 0, 0);
@@ -66,7 +68,9 @@ public class PlayerAttack : MonoBehaviour
 
 
 
-        if (Input.GetKey(KeyCode.Z)){
+        if (Input.GetKey(KeyCode.Z) && canAttack){
+            canAttack = false;
+            StartCoroutine(CooldownTimer(cooldownDuration));
             float angle = Mathf.Atan2(direction.y, direction.x);
             Vector3 spawnPoint = new Vector3(Mathf.Cos(angle) * range, Mathf.Sin(angle) * range, 0);
             spawnPoint = transform.position + spawnPoint;
@@ -74,6 +78,13 @@ public class PlayerAttack : MonoBehaviour
             GameObject attackInstance = Instantiate(meleeAttack, spawnPoint, Quaternion.Euler(new Vector3(0, 0, Mathf.Rad2Deg*angle)));
             Destroy(attackInstance, attackDuration);
         }
+
+    }
+
+    IEnumerator CooldownTimer(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        canAttack = true;
     }
 
 }
