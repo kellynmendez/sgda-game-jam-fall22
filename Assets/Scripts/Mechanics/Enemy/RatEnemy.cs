@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class RatEnemy : MonoBehaviour
 {
     private Transform _target;
-    private NavMeshAgent _agent;
+    //private NavMeshAgent _agent;
     private const float _chaseDelayTime = 0.2f;
 
     void Start()
@@ -17,15 +17,15 @@ public class RatEnemy : MonoBehaviour
         StartCoroutine(UpdateDestination());
 
         #region NavMeshPro required lines for nav mesh agent
-        var agent = GetComponent<NavMeshAgent>();
-        agent.updateRotation = false;
-        agent.updateUpAxis = false;
+        //_agent = GetComponent<NavMeshAgent>();
+        //_agent.updateRotation = false;
+        //_agent.updateUpAxis = false;
         #endregion
     }
 
     private IEnumerator UpdateDestination()
     {
-        _agent.SetDestination(_target.position);
+        //_agent.SetDestination(_target.position);
         yield return new WaitForSeconds(_chaseDelayTime);
     }
 }
