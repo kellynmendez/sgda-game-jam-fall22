@@ -224,7 +224,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -378,4 +378,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bb486057901fb94eb6af4a882c7e97f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gameScore: {fileID: 0}
+  _gameScore: {fileID: 8300000, guid: fb5e2d3338cb4c74392575bf456887e1, type: 3}
