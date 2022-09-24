@@ -308,15 +308,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3095708666343068922, guid: e3280f0a44b3c464ab918f2037aeac69, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 47.37
+      value: 49.7
       objectReference: {fileID: 0}
     - target: {fileID: 3095708666343068922, guid: e3280f0a44b3c464ab918f2037aeac69, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -23.09
+      value: -23.3
       objectReference: {fileID: 0}
     - target: {fileID: 3095708666343068922, guid: e3280f0a44b3c464ab918f2037aeac69, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3095708666343068922, guid: e3280f0a44b3c464ab918f2037aeac69, type: 3}
       propertyPath: m_LocalRotation.w
@@ -19628,7 +19628,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 0, b: 0.28701448, a: 1}
+      maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -19848,7 +19848,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startRotationX:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 0
       minScalar: 0
       maxCurve:
@@ -19901,7 +19901,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startRotationY:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 0
       minScalar: 0
       maxCurve:
@@ -19954,8 +19954,8 @@ ParticleSystem:
         m_RotationOrder: 4
     startRotation:
       serializedVersion: 2
-      minMaxState: 0
-      scalar: 0
+      minMaxState: 3
+      scalar: 3.1415925
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -20826,15 +20826,15 @@ ParticleSystem:
         m_NumAlphaKeys: 2
   UVModule:
     serializedVersion: 2
-    enabled: 0
-    mode: 0
+    enabled: 1
+    mode: 1
     timeMode: 0
     fps: 30
     frameOverTime:
       serializedVersion: 2
-      minMaxState: 1
+      minMaxState: 3
       scalar: 0.9999
-      minScalar: 0.9999
+      minScalar: 0
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -20945,7 +20945,28 @@ ParticleSystem:
     uvChannelMask: -1
     rowMode: 1
     sprites:
-    - sprite: {fileID: 0}
+    - sprite: {fileID: -975777031, guid: e6b1c0049d286b64593048487c2bf3f0, type: 3}
+    - sprite: {fileID: 299637781, guid: e6b1c0049d286b64593048487c2bf3f0, type: 3}
+    - sprite: {fileID: -1029350110, guid: e6b1c0049d286b64593048487c2bf3f0, type: 3}
+    - sprite: {fileID: -1179763414, guid: e6b1c0049d286b64593048487c2bf3f0, type: 3}
+    - sprite: {fileID: -841842673, guid: e6b1c0049d286b64593048487c2bf3f0, type: 3}
+    - sprite: {fileID: 1227083497, guid: e6b1c0049d286b64593048487c2bf3f0, type: 3}
+    - sprite: {fileID: -1198993014, guid: e6b1c0049d286b64593048487c2bf3f0, type: 3}
+    - sprite: {fileID: 765309583, guid: e6b1c0049d286b64593048487c2bf3f0, type: 3}
+    - sprite: {fileID: -1393640171, guid: e6b1c0049d286b64593048487c2bf3f0, type: 3}
+    - sprite: {fileID: -242903674, guid: e6b1c0049d286b64593048487c2bf3f0, type: 3}
+    - sprite: {fileID: -39267319, guid: e6b1c0049d286b64593048487c2bf3f0, type: 3}
+    - sprite: {fileID: -1374845921, guid: e6b1c0049d286b64593048487c2bf3f0, type: 3}
+    - sprite: {fileID: -2025088475, guid: e6b1c0049d286b64593048487c2bf3f0, type: 3}
+    - sprite: {fileID: 1722157025, guid: e6b1c0049d286b64593048487c2bf3f0, type: 3}
+    - sprite: {fileID: -355717819, guid: e6b1c0049d286b64593048487c2bf3f0, type: 3}
+    - sprite: {fileID: 1150630233, guid: e6b1c0049d286b64593048487c2bf3f0, type: 3}
+    - sprite: {fileID: -1695295492, guid: e6b1c0049d286b64593048487c2bf3f0, type: 3}
+    - sprite: {fileID: -1290132597, guid: e6b1c0049d286b64593048487c2bf3f0, type: 3}
+    - sprite: {fileID: -366987208, guid: e6b1c0049d286b64593048487c2bf3f0, type: 3}
+    - sprite: {fileID: 1142204565, guid: e6b1c0049d286b64593048487c2bf3f0, type: 3}
+    - sprite: {fileID: 973411097, guid: e6b1c0049d286b64593048487c2bf3f0, type: 3}
+    - sprite: {fileID: 1453154730, guid: e6b1c0049d286b64593048487c2bf3f0, type: 3}
     flipU: 0
     flipV: 0
   VelocityModule:
@@ -24588,8 +24609,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.075
-      minScalar: 0.025
+      scalar: 0.15
+      minScalar: 0.1
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -34678,7 +34699,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1593925365}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 60.1, y: -12.51, z: 0}
+  m_LocalPosition: {x: 57.4, y: -13, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -35207,7 +35228,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1601565885}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 47.33, y: -23.24, z: -0}
+  m_LocalPosition: {x: 57.61, y: -35.98, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -35227,10 +35248,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ac3f809d78cae347904a61f601af2bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xRadius: 0.2
-  yRadius: 0.2
-  xShakeRate: 1150
-  yShakeRate: 1200
+  xRadius: 0.4
+  yRadius: 0.4
+  xShakeRate: 3000
+  yShakeRate: 2750
 --- !u!1 &1672531062
 GameObject:
   m_ObjectHideFlags: 0
