@@ -10,7 +10,7 @@ public class CameraMovement : MonoBehaviour
 
     private void Awake()
     {
-        _objectToFollow = FindObjectOfType<PlayerMovement>().transform;
+        _objectToFollow = GameObject.FindGameObjectWithTag("Player").transform;
         // Create an offset between this position and the object's position
         _objectOffset = this.transform.position - _objectToFollow.position;
     }
