@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 3095708666343068923}
   - component: {fileID: 6105894987492174576}
   - component: {fileID: 1566428912692018535}
+  - component: {fileID: 788585062}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -171,6 +172,7 @@ MonoBehaviour:
   meleeAttack: {fileID: 6380405823749342074, guid: bd742ffb7f0465c439a509949355340c, type: 3}
   range: 1
   attackDuration: 0.1
+  cooldownDuration: 0.1
 --- !u!114 &1566428912692018535
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,3 +185,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6859d5beee2cc534287dba7c9276b26b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &788585062
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3095708666343068805}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
