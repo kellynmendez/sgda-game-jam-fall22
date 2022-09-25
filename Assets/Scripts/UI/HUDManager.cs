@@ -8,7 +8,8 @@ public class HUDManager : MonoBehaviour
 {
     [SerializeField] TMP_Text _currentScoreText;
     [SerializeField] MaskableGraphic _graphic = null;
-    [SerializeField] Slider slider;
+    [SerializeField] Slider _healthBar;
+    [SerializeField] Slider _trashProgressbar;
 
     HealthManager _healthMngr;
     int _health;
@@ -41,13 +42,18 @@ public class HUDManager : MonoBehaviour
 
     private void SetMaxHealth()
     {
-        slider.maxValue = _health;
-        slider.value = _health;
+        _healthBar.maxValue = _health;
+        _healthBar.value = _health;
     }
 
     public void SetHealth(int health)
     {
-        slider.value = health;
+        _healthBar.value = health;
+    }
+
+    public void StartTrashProgressBar()
+    {
+        //StartCoroutine(IncrementProgressBar(_trashProgressbar, ));
     }
 
     public void PlayDeathFX()
@@ -62,5 +68,23 @@ public class HUDManager : MonoBehaviour
     {
         yield return new WaitForSeconds(_deathPauseTime);
         Time.timeScale = 0f;
+    }
+
+    public static IEnumerator IncrementProgressBar(Slider slider, float fillSpeed, System.Action OnComplete = null)
+    {
+        // intial value
+        slider.value = 0;
+
+        while (slider.value < 1)
+        {
+            slider.value += fillSpeed * Time.deltaTime;
+            yield return null;
+        }
+
+        // final value
+        slider.value = 1;
+
+        if (OnComplete != null) { OnComplete(); }
+        yield break;
     }
 }
