@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Rat
   - Destructible
+  - TrashBin
   layers:
   - Default
   - TransparentFX

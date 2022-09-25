@@ -24,16 +24,6 @@ public class HUDManager : MonoBehaviour
         _graphic.color = new Color(1, 0, 0, .2f);
         // Start pause
         StartCoroutine(PauseScreen());
-
-        /*if (_deathParticles != null)
-        {
-            _deathParticles.Play();
-        }
-        if (_audioSource != null && _deathSFX != null)
-        {
-            _audioSource.volume = 150;
-            _audioSource.PlayOneShot(_deathSFX, _audioSource.volume);
-        }*/
     }
 
 
