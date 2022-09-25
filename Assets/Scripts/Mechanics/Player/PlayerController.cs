@@ -70,7 +70,6 @@ public class PlayerController : MonoBehaviour
                         _canLoot = false;
                         LootTrash();
                         Debug.Log("looting trash finished");
-                        StartCoroutine(CooldownTimer(_lootCooldownTime));
                     }
                 }
             }
@@ -197,11 +196,14 @@ public class PlayerController : MonoBehaviour
             state = PlayerState.FreeRoam;
             trash.Interrupt();
         }
+
+        Debug.Log("emptying bin is done! starting cooldown");
+
+        StartCoroutine(CooldownTimer(_lootCooldownTime));
     }
 
     IEnumerator CooldownTimer(float delay)
     {
-        Debug.Log("cooling down");
         yield return new WaitForSeconds(delay);
         _canLoot = true;
         Debug.Log("cool down finished");
