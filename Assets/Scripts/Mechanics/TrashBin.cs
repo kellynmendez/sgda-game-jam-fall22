@@ -59,7 +59,7 @@ public class TrashBin : MonoBehaviour
         if (state == BinState.Emptying) {
             state = BinState.Empty;
             timer = respawnDuration;
-            Debug.Log("Full -> Emptying via Interuption");
+            Debug.Log("Emptying -> Empty via Interuption");
             return true;
          }
 
