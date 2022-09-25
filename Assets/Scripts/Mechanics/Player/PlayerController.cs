@@ -69,7 +69,8 @@ public class PlayerController : MonoBehaviour
                     {
                         _canLoot = false;
                         LootTrash();
-                        CooldownTimer(_lootCooldownTime);
+                        Debug.Log("looting trash finished");
+                        StartCoroutine(CooldownTimer(_lootCooldownTime));
                     }
                 }
             }
@@ -95,6 +96,7 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.tag == "TrashBin")
         {
+            Debug.Log(collision.gameObject.name + " added to bin list");
             TrashBin bin = collision.gameObject.GetComponent<TrashBin>();
             _binList.Add(bin);
         }
@@ -104,6 +106,7 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.tag == "TrashBin")
         {
+            Debug.Log(collision.gameObject.name + " removed from bin list");
             TrashBin bin = collision.gameObject.GetComponent<TrashBin>();
             _binList.Remove(bin);
         }
@@ -111,6 +114,7 @@ public class PlayerController : MonoBehaviour
 
     private void LootTrash()
     {
+        
         // Player's current position
         Vector2 playerPos = transform.position;
         // Track trash can that is closest and its distance from player
@@ -131,7 +135,7 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
-
+        Debug.Log("Closest trash bin is " + closestBin.gameObject.name);
         // Interacting with the closest trash can
         TrashLock(closestBin, closestBin.emptyingDuration);
     }
@@ -154,6 +158,7 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator MoveToTrash(TrashBin trash, float travelTime, float waitTime)
     {
+        Debug.Log("lerping to position");
         // Moving to trash can position
         Vector3 oldPosition = transform.position;
         float elapsed = 0;
@@ -176,6 +181,7 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator LootTrash(TrashBin trash, float waitTime)
     {
+        Debug.Log("Emptying the bin");
         trash.EmptyBin();
         while(waitTime > 0 && Input.GetKey(_lootTrash))
         {
@@ -191,7 +197,9 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator CooldownTimer(float delay)
     {
+        Debug.Log("cooling down");
         yield return new WaitForSeconds(delay);
         _canLoot = true;
+        Debug.Log("cool down finished");
     }
 }
