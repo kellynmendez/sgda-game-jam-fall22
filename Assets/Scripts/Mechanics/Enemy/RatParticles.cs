@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RatParticles : MonoBehaviour
 {
-    [SerializeField] PlayerMovement _player;
+    [SerializeField] PlayerController _player;
 
     HealthManager _healthMngr;
     ParticleSystem ps;
@@ -14,7 +14,7 @@ public class RatParticles : MonoBehaviour
     private void Awake()
     {
         ps = transform.GetComponent<ParticleSystem>();
-        _player = FindObjectOfType<PlayerMovement>();
+        _player = FindObjectOfType<PlayerController>();
         _healthMngr = _player.GetComponent<HealthManager>();
         GetComponent<ParticleSystem>().trigger.SetCollider(0, _player.gameObject.transform);
     }
