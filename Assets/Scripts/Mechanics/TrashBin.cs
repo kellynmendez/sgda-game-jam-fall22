@@ -17,7 +17,7 @@ public class TrashBin : MonoBehaviour
         
     }
 
-    public void Interupt()
+    public void Interrupt()
     {
 
     }
