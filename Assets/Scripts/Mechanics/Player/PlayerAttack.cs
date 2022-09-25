@@ -11,18 +11,18 @@ public class PlayerAttack : MonoBehaviour
     public float cooldownDuration = 0.1f;
     bool canAttack = true;
 
-    PlayerMovement playerMov;
+    PlayerController playerMov;
 
     // Start is called before the first frame update
     void Start()
     {
-        playerMov = gameObject.GetComponent<PlayerMovement>();
+        playerMov = gameObject.GetComponent<PlayerController>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Z) && canAttack && playerMov.GetState() == PlayerMovement.PlayerState.FreeRoam)
+        if (Input.GetKey(KeyCode.Z) && canAttack && playerMov.GetState() == PlayerController.PlayerState.FreeRoam)
         {
             canAttack = false;
             StartCoroutine(CooldownTimer(cooldownDuration));

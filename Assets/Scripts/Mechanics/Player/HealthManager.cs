@@ -8,23 +8,26 @@ public class HealthManager : MonoBehaviour
     [SerializeField] GameObject _visualsToDeactivate;
     [SerializeField] ParticleSystemForceField _field;
 
+    // Player data
     private int _currentHealth = 3;
     private bool _playerIsDead;
-    private float _pauseTime = 2f;
 
     private Rigidbody2D _rigidBody;
     private BoxCollider2D _boxCollider;
+    private HUDManager _hudMngr;
+    private float _duration = 0.5f;
+    private float _magnitude = 1f;
 
     private void Awake()
     {
         _playerIsDead = false;
         _rigidBody = GetComponent<Rigidbody2D>();
         _boxCollider = GetComponent<BoxCollider2D>();
+        _hudMngr = FindObjectOfType<HUDManager>();
     }
 
     public void DecreaseHealth(int healthDecr)
     {
-        Debug.Log("Decreasing health: " + _currentHealth);
         _currentHealth -= healthDecr;
         if (_currentHealth <= 0)
         {
@@ -39,41 +42,38 @@ public class HealthManager : MonoBehaviour
 
     private void Kill()
     {
-        Debug.Log("Player has been killed!");
         DisableDeathObjects();
         _playerIsDead = true;
-        //PlayDeathFX();
+        _hudMngr.PlayDeathFX();
+        StartCoroutine(CameraShake(_duration, _magnitude));
     }
 
     private void DisableDeathObjects()
     {
         _visualsToDeactivate.SetActive(false);
-        _field.enabled = false;
         _boxCollider.enabled = false;
         Destroy(_rigidBody);
-        StartCoroutine(PauseScreen());
     }
 
-    /*
-    private void PlayDeathFX()
+    IEnumerator CameraShake(float duration, float magnitude)
     {
-        Debug.Log("playing death fx");
-        if (_deathParticles != null)
-        {
-            _deathParticles.Play();
-        }
-        if (_audioSource != null && _deathSFX != null)
-        {
-            _audioSource.volume = 150;
-            _audioSource.PlayOneShot(_deathSFX, _audioSource.volume);
-        }
-    }
-    */
+        Debug.Log("shaking");
+        Vector2 originalPos = transform.localPosition;
 
-    IEnumerator PauseScreen()
-    {
-        Debug.Log("pausing screen");
-        yield return new WaitForSeconds(_pauseTime);
-        Time.timeScale = 0f;
+        float elapsed = 0.0f;
+
+        while (elapsed < duration)
+        {
+            float x = Random.Range(-1f, 1f) * magnitude;
+            float y = Random.Range(-1f, 1f) * magnitude;
+
+            transform.localPosition = new Vector2(x, y);
+
+            elapsed += Time.deltaTime;
+
+            yield return null;
+        }
+
+        transform.localPosition = originalPos;
     }
 }
