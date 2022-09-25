@@ -65,12 +65,31 @@ public class PlayerController : MonoBehaviour
                         appliedAccelerationY += acceleration;
 
                     // Interact keys
+                    // If looting
                     if (Input.GetKey(_lootTrash) && _canLoot)
                     {
-                        _canLoot = false;
-                        LootTrash();
-                        Debug.Log("looting trash finished");
+                        Debug.Log("X was pressed");
+                        Debug.Log("bin list count is " + _binList.Count);
+                        // There must be a bin that can be interacted with
+                        if (_binList.Count != 0)
+                        {
+                            Debug.Log("bin has something in it");
+                            _canLoot = false;
+                            TrashBin closestBin = PickTrashBin();
+                            if (closestBin != null)
+                            {
+                                Debug.Log("Closest trash bin is " + closestBin.gameObject.name);
+                                // Interacting with the closest trash can
+                                TrashLock(closestBin, closestBin.emptyingDuration);
+                                Debug.Log("looting trash finished");
+                            }
+                            else
+                            {
+                                Debug.Log("no (full) bin exists to interact with");
+                            }
+                        }
                     }
+                    // If lighting
                     if (Input.GetKey(_lightTrash))
                     {
 
@@ -115,34 +134,41 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void LootTrash()
+    private TrashBin PickTrashBin()
     {
-        
         // Player's current position
         Vector2 playerPos = transform.position;
         // Track trash can that is closest and its distance from player
-        if (_binList.Count == 0)
-            return;
-        TrashBin closestBin = _binList[0];
-        float smallestDist = Vector2.Distance(playerPos, closestBin.transform.position);
+        //TrashBin closestBin = null;
+        TrashBin closestBin = null;
+        float smallestDist = -1;
 
         foreach (TrashBin check in _binList)
         {
             // if the bin is ready to be interacted with
             if (check.GetState() == TrashBin.BinState.Full)
             {
-                float distance = Vector2.Distance(playerPos, check.transform.position);
-                // If distance is smaller, then this bin is closer
-                if (distance < smallestDist)
+                // If this is the first full bin to be found
+                if (closestBin == null)
                 {
-                    closestBin = check;
-                    smallestDist = distance;
+                    closestBin = _binList[0];
+                    smallestDist = Vector2.Distance(playerPos, closestBin.transform.position);
+                }
+                // Otherwise see if closer than other bin
+                else
+                {
+                    float distance = Vector2.Distance(playerPos, check.transform.position);
+                    // If distance is smaller, then this bin is closer
+                    if (distance < smallestDist)
+                    {
+                        closestBin = check;
+                        smallestDist = distance;
+                    }
                 }
             }
         }
-        Debug.Log("Closest trash bin is " + closestBin.gameObject.name);
-        // Interacting with the closest trash can
-        TrashLock(closestBin, closestBin.emptyingDuration);
+        // return trash bin
+        return closestBin;
     }
 
     public PlayerState GetState()
