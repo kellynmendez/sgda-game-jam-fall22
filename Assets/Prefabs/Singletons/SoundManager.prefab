@@ -50,23 +50,103 @@ MonoBehaviour:
     volume: 0
     pitchVariation: 0
     source: {fileID: 0}
-  - audioName: 
-    audioClip: {fileID: 0}
-    volume: 0
+  - audioName: character_attack_swing
+    audioClip: {fileID: 8300000, guid: 1fc85d8885b45384fa0f5eadfa2ee03c, type: 3}
+    volume: 0.5
     pitchVariation: 0
     source: {fileID: 0}
-  - audioName: 
-    audioClip: {fileID: 0}
-    volume: 0
+  - audioName: character_attack_swing2
+    audioClip: {fileID: 8300000, guid: 5d0faf7d7b56d794b8e300143007b59b, type: 3}
+    volume: 0.5
     pitchVariation: 0
     source: {fileID: 0}
-  - audioName: 
-    audioClip: {fileID: 0}
-    volume: 0
+  - audioName: character_collect1
+    audioClip: {fileID: 8300000, guid: 73ce87934d66d1e41ab585510aff0e10, type: 3}
+    volume: 0.5
     pitchVariation: 0
     source: {fileID: 0}
-  - audioName: 
-    audioClip: {fileID: 0}
-    volume: 0
+  - audioName: character_collect2
+    audioClip: {fileID: 8300000, guid: 73316a7d89efc40409776323f26a8579, type: 3}
+    volume: 0.5
+    pitchVariation: 0
+    source: {fileID: 0}
+  - audioName: character_collect3
+    audioClip: {fileID: 8300000, guid: 795e7af8fd4f9884b934a05a3a07d7e1, type: 3}
+    volume: 0.5
+    pitchVariation: 0
+    source: {fileID: 0}
+  - audioName: character_collect4
+    audioClip: {fileID: 8300000, guid: 7cad6524b8cbffa41a81df5e05a536e7, type: 3}
+    volume: 0.5
+    pitchVariation: 0
+    source: {fileID: 0}
+  - audioName: character_death
+    audioClip: {fileID: 8300000, guid: e5b8035decfec764aafde46ef622d1df, type: 3}
+    volume: 0.5
+    pitchVariation: 0
+    source: {fileID: 0}
+  - audioName: character_digging
+    audioClip: {fileID: 8300000, guid: 60745afc0c075c94bb6ace31e3d66018, type: 3}
+    volume: 0.5
+    pitchVariation: 0
+    source: {fileID: 0}
+  - audioName: character_hurt
+    audioClip: {fileID: 8300000, guid: 9a7d8703b8bb3ba4e8483810e3285a1c, type: 3}
+    volume: 0.5
+    pitchVariation: 0
+    source: {fileID: 0}
+  - audioName: character_hurt1
+    audioClip: {fileID: 8300000, guid: aef6aeab245afb64697a697f6ff629e2, type: 3}
+    volume: 0.5
+    pitchVariation: 0
+    source: {fileID: 0}
+  - audioName: character_hurt2
+    audioClip: {fileID: 8300000, guid: 5ae6f7a0b64f51f4a80f86575d2710ff, type: 3}
+    volume: 0.5
+    pitchVariation: 0
+    source: {fileID: 0}
+  - audioName: sfx_barrel_fireambience
+    audioClip: {fileID: 8300000, guid: e592962be04fc5343a9a2abaf211b98c, type: 3}
+    volume: 0.5
+    pitchVariation: 0
+    source: {fileID: 0}
+  - audioName: sfx_barrel_lit
+    audioClip: {fileID: 8300000, guid: 71f48d93ba95a784fb05eb0f723eb1c4, type: 3}
+    volume: 0.5
+    pitchVariation: 0
+    source: {fileID: 0}
+  - audioName: sfx_barrel_lit2
+    audioClip: {fileID: 8300000, guid: a838f8f9ac892e14ca23f381440de2eb, type: 3}
+    volume: 0.5
+    pitchVariation: 0
+    source: {fileID: 0}
+  - audioName: sfx_ratdeath
+    audioClip: {fileID: 8300000, guid: 790d2ee56aa3eb74ea42d5ef1ac0be2a, type: 3}
+    volume: 0.5
+    pitchVariation: 0
+    source: {fileID: 0}
+  - audioName: sfx_ratdeath2
+    audioClip: {fileID: 8300000, guid: 176ec9ab64e85ed479066a064a07482e, type: 3}
+    volume: 0.5
+    pitchVariation: 0
+    source: {fileID: 0}
+  - audioName: sfx_ratdeath3
+    audioClip: {fileID: 8300000, guid: 29cb82c6e4c75b345ab857854a8dcd16, type: 3}
+    volume: 0.5
+    pitchVariation: 0
+    source: {fileID: 0}
+  - audioName: sfx_ratdeath4
+    audioClip: {fileID: 8300000, guid: a54960475689b754e91edc37ea9e3f25, type: 3}
+    volume: 0.5
+    pitchVariation: 0
+    source: {fileID: 0}
+  - audioName: sfx_ratdeath5
+    audioClip: {fileID: 8300000, guid: c2b6fcbba658bba45982557857213b7a, type: 3}
+    volume: 0.5
+    pitchVariation: 0
+    source: {fileID: 0}
+  - audioName: scurry1
+    audioClip: {fileID: 8300000, guid: b4fc7f8b585d773499cf80f570c0529e, type: 3}
+    volume: 0.5
     pitchVariation: 0
     source: {fileID: 0}
