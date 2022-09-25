@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TrashParticles : MonoBehaviour
 {
-    [SerializeField] PlayerMovement _player;
+    [SerializeField] PlayerController _player;
 
     ParticleSystem ps;
 
@@ -13,7 +13,7 @@ public class TrashParticles : MonoBehaviour
     private void Awake()
     {
         ps = transform.GetComponent<ParticleSystem>();
-        _player = FindObjectOfType<PlayerMovement>();
+        _player = FindObjectOfType<PlayerController>();
         GetComponent<ParticleSystem>().trigger.SetCollider(0, _player.gameObject.transform);
     }
 
