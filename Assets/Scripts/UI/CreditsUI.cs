@@ -15,7 +15,7 @@ public class CreditsUI : MonoBehaviour
     {
         _transform = GetComponent<RectTransform>();
         from = _transform.position;
-        to = new Vector3(_transform.position.x, _transform.position.y + 900, _transform.position.z);
+        to = new Vector3(_transform.position.x, _transform.position.y + 2000, _transform.position.z);
         StartCoroutine(LerpPosition(_transform, from, to, _duration));
     }
 
