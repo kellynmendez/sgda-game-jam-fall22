@@ -133,7 +133,7 @@ public class PlayerController : MonoBehaviour
         }
 
         // Interacting with the closest trash can
-        TrashLock(closestBin, TrashBin.emptyingDuration);
+        TrashLock(closestBin, closestBin.emptyingDuration);
     }
 
     public PlayerState GetState()
