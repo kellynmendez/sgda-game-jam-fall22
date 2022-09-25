@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Test-Scenes/Sandbox_TileTest.unity
     guid: 53f7c2b59825dda499c794afa376d90a
+  - enabled: 1
+    path: Assets/Scenes/Credits.unity
+    guid: 8e8eaa991947dec4aa7928e9c773ffd3
   m_configObjects: {}
