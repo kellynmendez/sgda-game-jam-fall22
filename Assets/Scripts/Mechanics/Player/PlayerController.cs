@@ -76,8 +76,6 @@ public class PlayerController : MonoBehaviour
                                 state = PlayerState.TrashLocked;
                                 // Looting the closest trash can
                                 StartCoroutine(MoveToLootTrash(closestBin, 0.05f, closestBin.emptyingDuration));
-                                // Changing state back to roam
-                                state = PlayerState.FreeRoam;
                             }
                         }
                     }
@@ -181,6 +179,7 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator MoveToLootTrash(TrashBin trash, float travelTime, float waitTime)
     {
+        Debug.Log("moving to loot trash");
         // Moving to trash can position
         Vector3 oldPosition = transform.position;
         float elapsed = 0;
@@ -206,6 +205,7 @@ public class PlayerController : MonoBehaviour
         trash.Burn();
         // Moving to trash can position
         Vector3 oldPosition = transform.position;
+        transform.position = oldPosition;
         float elapsed = 0;
         while (elapsed < travelTime)
         {
@@ -217,9 +217,12 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator LootTrash(TrashBin trash, float waitTime)
     {
+        Debug.Log("Looting trash");
         trash.EmptyBin();
-        while(waitTime > 0 && Input.GetKey(_lootTrash))
+
+        while (waitTime > 0 && Input.GetKey(_lootTrash))
         {
+            transform.position = trash.transform.position;
             waitTime -= Time.deltaTime;
             yield return null;
         }
@@ -229,5 +232,7 @@ public class PlayerController : MonoBehaviour
             state = PlayerState.FreeRoam;
             trash.Interrupt();
         }
+
+        state = PlayerState.FreeRoam;// Changing state back to roam
     }
 }
