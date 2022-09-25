@@ -13,13 +13,15 @@ public class PlayerController : MonoBehaviour
     PlayerState state = PlayerState.FreeRoam;
     HealthManager _healthMgr;
 
+    List<TrashBin> _binList;
+
+    bool _canLoot = true;
     float dragCoefficent = 0.5f;
     float appliedAccelerationX = 0f;
     float appliedAccelerationY = 0f;
+    float _lootCooldownTime = 0.1f;
     KeyCode _lightTrash = KeyCode.V;
     KeyCode _lootTrash = KeyCode.X;
-
-    bool isDigging = false;
 
     public enum PlayerState
     {
@@ -33,6 +35,45 @@ public class PlayerController : MonoBehaviour
         dragCoefficent = acceleration/maxVelocity;
         body = GetComponent<Rigidbody2D>();
         _healthMgr = GetComponent<HealthManager>();
+        _binList = new List<TrashBin>();
+    }
+
+    void Update()
+    {
+        // If player is not dead, then it can move
+        if (state != PlayerState.Dead)
+        {
+            // Change state to dead if player died
+            if (_healthMgr.IsPlayerDead())
+            {
+                state = PlayerState.Dead;
+            }
+            else
+            {
+                if (state == PlayerState.FreeRoam) 
+                {
+                    // Movement keys
+                    appliedAccelerationX = 0f;
+                    appliedAccelerationY = 0f;
+                    if (Input.GetKey(KeyCode.LeftArrow))
+                        appliedAccelerationX -= acceleration;
+                    if (Input.GetKey(KeyCode.RightArrow))
+                        appliedAccelerationX += acceleration;
+                    if (Input.GetKey(KeyCode.DownArrow))
+                        appliedAccelerationY -= acceleration;
+                    if (Input.GetKey(KeyCode.UpArrow))
+                        appliedAccelerationY += acceleration;
+
+                    // Interact keys
+                    if (Input.GetKey(_lootTrash) && _canLoot)
+                    {
+                        _canLoot = false;
+                        LootTrash();
+                        CooldownTimer(_lootCooldownTime);
+                    }
+                }
+            }
+        }
     }
 
     private void FixedUpdate()
@@ -48,41 +89,58 @@ public class PlayerController : MonoBehaviour
                 body.velocity = velocity;
             }
         }
-        
     }
 
-    void Update()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        // If player is not dead, then it can move
-        if (state != PlayerState.Dead)
+        if (collision.tag == "TrashBin")
         {
-            // Change state to dead if player died
-            if (_healthMgr.IsPlayerDead())
-            {
-                state = PlayerState.Dead;
-            }
-            else
-            {
-                if (state == PlayerState.FreeRoam) {
-                    appliedAccelerationX = 0f;
-                    appliedAccelerationY = 0f;
-                    if (Input.GetKey(KeyCode.LeftArrow))
-                        appliedAccelerationX -= acceleration;
-                    if (Input.GetKey(KeyCode.RightArrow))
-                        appliedAccelerationX += acceleration;
-                    if (Input.GetKey(KeyCode.DownArrow))
-                        appliedAccelerationY -= acceleration;
-                    if (Input.GetKey(KeyCode.UpArrow))
-                        appliedAccelerationY += acceleration;
-                }
-            }
-            
+            TrashBin bin = collision.gameObject.GetComponent<TrashBin>();
+            _binList.Add(bin);
         }
     }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag == "TrashBin")
+        {
+            TrashBin bin = collision.gameObject.GetComponent<TrashBin>();
+            _binList.Remove(bin);
+        }
+    }
+
+    private void LootTrash()
+    {
+        // Player's current position
+        Vector2 playerPos = transform.position;
+        // Track trash can that is closest and its distance from player
+        TrashBin closestBin = _binList[0];
+        float smallestDist = Vector2.Distance(playerPos, closestBin.transform.position);
+
+        foreach (TrashBin check in _binList)
+        {
+            // if the bin is ready to be interacted with
+            if (check.GetState() == TrashBin.BinState.Full)
+            {
+                float distance = Vector2.Distance(playerPos, check.transform.position);
+                // If distance is smaller, then this bin is closer
+                if (distance < smallestDist)
+                {
+                    closestBin = check;
+                    smallestDist = distance;
+                }
+            }
+        }
+
+        // Interacting with the closest trash can
+        TrashLock(closestBin, TrashBin.emptyingDuration);
+    }
+
     public PlayerState GetState()
     {
         return state;
     }
+
     public void ApplyVelocity(Vector3 newVelocity)
     {
         velocity += newVelocity;
@@ -108,7 +166,7 @@ public class PlayerController : MonoBehaviour
         // If player is still holding down the key
         if (Input.GetKey(_lootTrash))
         {
-            StartCoroutine(DigTrash(trash, waitTime));
+            StartCoroutine(LootTrash(trash, waitTime));
         }
         else
         {
@@ -116,9 +174,8 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    IEnumerator DigTrash(TrashBin trash, float waitTime)
+    IEnumerator LootTrash(TrashBin trash, float waitTime)
     {
-        isDigging = true;
         trash.EmptyBin();
         while(waitTime > 0 && Input.GetKey(_lootTrash))
         {
@@ -126,10 +183,15 @@ public class PlayerController : MonoBehaviour
             yield return null;
         }
 
-        isDigging = false;
         state = PlayerState.FreeRoam;
 
         if (!Input.GetKey(_lootTrash))
             trash.Interrupt();
+    }
+
+    IEnumerator CooldownTimer(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        _canLoot = true;
     }
 }
