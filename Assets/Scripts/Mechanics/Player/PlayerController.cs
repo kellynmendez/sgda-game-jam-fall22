@@ -70,7 +70,10 @@ public class PlayerController : MonoBehaviour
                         _canLoot = false;
                         LootTrash();
                         Debug.Log("looting trash finished");
-                        StartCoroutine(CooldownTimer(_lootCooldownTime));
+                    }
+                    if (Input.GetKey(_lightTrash))
+                    {
+
                     }
                 }
             }
@@ -118,6 +121,8 @@ public class PlayerController : MonoBehaviour
         // Player's current position
         Vector2 playerPos = transform.position;
         // Track trash can that is closest and its distance from player
+        if (_binList.Count == 0)
+            return;
         TrashBin closestBin = _binList[0];
         float smallestDist = Vector2.Distance(playerPos, closestBin.transform.position);
 
@@ -189,15 +194,20 @@ public class PlayerController : MonoBehaviour
             yield return null;
         }
 
-        state = PlayerState.FreeRoam;
-
         if (!Input.GetKey(_lootTrash))
+        {
+            Debug.Log("interaction ended early, free roam");
+            state = PlayerState.FreeRoam;
             trash.Interrupt();
+        }
+
+        Debug.Log("emptying bin is done! starting cooldown");
+
+        StartCoroutine(CooldownTimer(_lootCooldownTime));
     }
 
     IEnumerator CooldownTimer(float delay)
     {
-        Debug.Log("cooling down");
         yield return new WaitForSeconds(delay);
         _canLoot = true;
         Debug.Log("cool down finished");
