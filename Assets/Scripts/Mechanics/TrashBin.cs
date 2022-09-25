@@ -5,7 +5,16 @@ using UnityEngine;
 
 public class TrashBin : MonoBehaviour
 {
+    BinState state = BinState.Full;
+
     // Start is called before the first frame update
+    public enum BinState{
+        Full = 0,
+        Emptying = 1,
+        Burning = 2,
+        Empty = 3
+    }
+
     void Start()
     {
         
@@ -15,6 +24,16 @@ public class TrashBin : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public BinState GetState()
+    {
+        return state;
+    }
+
+    public void Burn()
+    {
+
     }
 
     public void Interrupt()
