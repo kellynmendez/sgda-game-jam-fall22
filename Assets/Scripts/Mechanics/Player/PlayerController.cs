@@ -18,7 +18,6 @@ public class PlayerController : MonoBehaviour
     float dragCoefficent = 0.5f;
     float appliedAccelerationX = 0f;
     float appliedAccelerationY = 0f;
-    float _lootCooldownTime = 0.1f;
     KeyCode _lightTrash = KeyCode.V;
     KeyCode _lootTrash = KeyCode.X;
 
