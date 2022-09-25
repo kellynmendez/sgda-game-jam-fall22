@@ -21,11 +21,15 @@ public class CreditsUI : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
         if (Input.GetKey(KeyCode.Return))
         {
             SceneManager.LoadScene(0);
         }
-        else if (creditsDone)
+        if (creditsDone)
         {
             SceneManager.LoadScene(0);
         }

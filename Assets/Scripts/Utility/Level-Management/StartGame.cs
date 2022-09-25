@@ -11,5 +11,11 @@ public class StartGame : MonoBehaviour
         {
             SceneManager.LoadScene(1);
         }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
     }
 }
+
+    

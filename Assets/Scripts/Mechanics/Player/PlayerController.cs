@@ -20,8 +20,8 @@ public class PlayerController : MonoBehaviour
     float appliedAccelerationX = 0f;
     float appliedAccelerationY = 0f;
     bool isDigging = false;
-    KeyCode _lightTrash = KeyCode.V;
-    KeyCode _lootTrash = KeyCode.X;
+    KeyCode _lightTrash = KeyCode.Q;
+    KeyCode _lootTrash = KeyCode.E;
 
     public enum PlayerState
     {
@@ -92,13 +92,13 @@ public class PlayerController : MonoBehaviour
                     // Movement keys
                     appliedAccelerationX = 0f;
                     appliedAccelerationY = 0f;
-                    if (Input.GetKey(KeyCode.LeftArrow))
+                    if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
                         appliedAccelerationX -= acceleration;
-                    if (Input.GetKey(KeyCode.RightArrow))
+                    if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
                         appliedAccelerationX += acceleration;
-                    if (Input.GetKey(KeyCode.DownArrow))
+                    if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
                         appliedAccelerationY -= acceleration;
-                    if (Input.GetKey(KeyCode.UpArrow))
+                    if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
                         appliedAccelerationY += acceleration;
 
                     // Interact keys
