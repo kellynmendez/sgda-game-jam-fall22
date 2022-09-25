@@ -7,9 +7,9 @@ public class HealthManager : MonoBehaviour
     [Header("Setup")]
     [SerializeField] GameObject _visualsToDeactivate;
     [SerializeField] ParticleSystemForceField _field;
+    [SerializeField] int _currentHealth = 250;
 
-    // Player data
-    private int _currentHealth = 3;
+
     private bool _playerIsDead;
 
     private Rigidbody2D _rigidBody;
@@ -26,9 +26,15 @@ public class HealthManager : MonoBehaviour
         _hudMngr = FindObjectOfType<HUDManager>();
     }
 
+    public int GetCurrentHealth()
+    {
+        return _currentHealth;
+    }
+
     public void DecreaseHealth(int healthDecr)
     {
         _currentHealth -= healthDecr;
+        _hudMngr.SetHealth(_currentHealth);
         if (_currentHealth <= 0)
         {
             Kill();
