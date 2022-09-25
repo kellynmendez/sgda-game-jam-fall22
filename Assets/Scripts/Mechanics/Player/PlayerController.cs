@@ -12,12 +12,14 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D body;
     PlayerState state = PlayerState.FreeRoam;
     HealthManager _healthMgr;
+    Animator animator;
 
     List<TrashBin> _binList;
 
     float dragCoefficent = 0.5f;
     float appliedAccelerationX = 0f;
     float appliedAccelerationY = 0f;
+    bool isDigging = false;
     KeyCode _lightTrash = KeyCode.V;
     KeyCode _lootTrash = KeyCode.X;
 
@@ -34,6 +36,7 @@ public class PlayerController : MonoBehaviour
         body = GetComponent<Rigidbody2D>();
         _healthMgr = GetComponent<HealthManager>();
         _binList = new List<TrashBin>();
+        animator = transform.GetChild(0).GetComponent<Animator>();
     }
 
     void Update()
@@ -41,6 +44,42 @@ public class PlayerController : MonoBehaviour
         // If player is not dead, then it can move
         if (state != PlayerState.Dead)
         {
+
+            if ((velocity.x <= 0.001f && velocity.x >= -0.0001f) && (velocity.y <= 0.001f && velocity.y >= -0.0001f))
+            {
+                animator.SetBool("Moving", false);
+            }
+            else
+            {
+                animator.SetBool("Moving", true);
+            }
+            float angle = Mathf.Atan2(velocity.y, velocity.x) * Mathf.Rad2Deg;
+            bool up = (angle <= 135 && angle >= 45);
+            bool down = (angle <= -45 && angle >= -135);
+            animator.SetBool("UpDown", up || down);
+            bool left = (angle >= 135 && angle <= 180 || angle <= -135 && angle >= -180);
+            bool right = (angle <= 45 && angle >= 0 || angle >= -45 && angle <= 0);
+            if (left == true)
+            {
+                transform.GetChild(0).GetComponent<SpriteRenderer>().flipX = true;
+            }
+            else
+            {
+                transform.GetChild(0).GetComponent<SpriteRenderer>().flipX = false;
+            }
+
+            if (down == true)
+            {
+                transform.GetChild(0).GetComponent<SpriteRenderer>().flipY = true;
+            }
+            else
+            {
+                transform.GetChild(0).GetComponent<SpriteRenderer>().flipY = false;
+            }
+            animator.SetBool("RightLeft", right || left);
+            animator.SetBool("Dig", isDigging);
+
+
             // Change state to dead if player died
             if (_healthMgr.IsPlayerDead())
             {
@@ -219,13 +258,15 @@ public class PlayerController : MonoBehaviour
     {
         Debug.Log("Looting trash");
         trash.EmptyBin();
-
-        while (waitTime > 0 && Input.GetKey(_lootTrash))
+        isDigging = true;
+        while(waitTime > 0 && Input.GetKey(_lootTrash))
         {
             transform.position = trash.transform.position;
             waitTime -= Time.deltaTime;
             yield return null;
         }
+
+        isDigging = false;
 
         if (!Input.GetKey(_lootTrash))
         {
