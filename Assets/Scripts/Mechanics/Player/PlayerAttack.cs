@@ -11,6 +11,8 @@ public class PlayerAttack : MonoBehaviour
     public float cooldownDuration = 0.1f;
     bool canAttack = true;
 
+    Vector3 lastValidSpawn = Vector3.right;
+
     PlayerController playerMov;
 
     // Start is called before the first frame update
@@ -27,10 +29,24 @@ public class PlayerAttack : MonoBehaviour
             canAttack = false;
             StartCoroutine(CooldownTimer(cooldownDuration));
             Vector3 spawnPoint = playerMov.velocity.normalized * range;
-            float angle = Vector3.Angle(Vector3.right, spawnPoint);
+            if (spawnPoint == Vector3.zero)
+            spawnPoint = lastValidSpawn-transform.position;
+            float angle = Mathf.Atan2(spawnPoint.y, spawnPoint.x) * Mathf.Rad2Deg;
+
             spawnPoint = transform.position + spawnPoint;
+            lastValidSpawn = spawnPoint;
             
             GameObject attackInstance = Instantiate(meleeAttack, spawnPoint, Quaternion.Euler(new Vector3(0, 0, angle)));
+
+            if (angle <= 135 && angle >= 45)
+            { attackInstance.GetComponent<SpriteRenderer>().flipY = false; }
+            if (angle <= -45 && angle >= -135)
+            { attackInstance.GetComponent<SpriteRenderer>().flipY = true; }
+            if (angle >= 135 && angle <= 180 || angle <= -135 && angle >= -180)
+            { attackInstance.GetComponent<SpriteRenderer>().flipY = true; }
+            if (angle <= 45 && angle >= 0 || angle >= -45 && angle <= 0)
+            { attackInstance.GetComponent<SpriteRenderer>().flipX = true; }
+
             attackInstance.transform.SetParent(transform);
             Destroy(attackInstance, attackDuration);
         }
