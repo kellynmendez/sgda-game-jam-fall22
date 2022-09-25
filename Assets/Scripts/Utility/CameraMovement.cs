@@ -4,20 +4,19 @@ using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
 {
-    Transform _objectToFollow = null;
+    public float factor = -0.035f;
 
-    Vector3 _objectOffset;
+    PlayerController player = null;
+
 
     private void Awake()
     {
-        _objectToFollow = GameObject.FindGameObjectWithTag("Player").transform;
-        // Create an offset between this position and the object's position
-        _objectOffset = this.transform.position - _objectToFollow.position;
+        player = FindObjectOfType<PlayerController>();
     }
 
     private void LateUpdate()
     {
         // Apply the offset every frame to reposition this object
-        this.transform.position = _objectToFollow.position + _objectOffset;
+        this.transform.position = player.transform.position + (player.velocity * factor);
     }
 }
