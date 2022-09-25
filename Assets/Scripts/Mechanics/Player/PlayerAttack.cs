@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-
+    CameraMovement cam;
     public GameObject meleeAttack;
     public float range = 1;
     public float attackDuration = 0.1f;
@@ -18,6 +18,7 @@ public class PlayerAttack : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        cam = FindObjectOfType<CameraMovement>();
         playerMov = gameObject.GetComponent<PlayerController>();
     }
 
@@ -29,13 +30,13 @@ public class PlayerAttack : MonoBehaviour
             canAttack = false;
             StartCoroutine(CooldownTimer(cooldownDuration));
             Vector3 spawnPoint = playerMov.velocity.normalized * range;
+
             if (spawnPoint == Vector3.zero)
             spawnPoint = lastValidSpawn-transform.position;
             float angle = Mathf.Atan2(spawnPoint.y, spawnPoint.x) * Mathf.Rad2Deg;
 
             spawnPoint = transform.position + spawnPoint;
             lastValidSpawn = spawnPoint;
-            
             GameObject attackInstance = Instantiate(meleeAttack, spawnPoint, Quaternion.Euler(new Vector3(0, 0, angle)));
 
             if (angle <= 135 && angle >= 45)
