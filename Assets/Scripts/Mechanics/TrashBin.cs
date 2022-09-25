@@ -5,12 +5,15 @@ using UnityEngine;
 
 public class TrashBin : MonoBehaviour
 {
+    public GameObject binLight;
+
     public float respawnDuration = 5;
     public float burnDuration = 5;
     public float emptyingDuration = 5;
 
     private BinState state = BinState.Full;
     private float timer = 0f;
+    private GameObject bLight;
 
     // Start is called before the first frame update
     public enum BinState{
@@ -22,7 +25,10 @@ public class TrashBin : MonoBehaviour
 
     void Start()
     {
-
+        bLight = Instantiate(binLight);
+        bLight.transform.parent = transform;
+        bLight.SetActive(false);
+        Burn();
     }
 
     // Update is called once per frame
@@ -46,7 +52,9 @@ public class TrashBin : MonoBehaviour
         if (state == BinState.Full)
         {
             state = BinState.Burning;
+
             timer = burnDuration;
+            bLight.SetActive(true);
             Debug.Log("Full -> Burning");
             return true;
         }
@@ -92,6 +100,7 @@ public class TrashBin : MonoBehaviour
             case BinState.Burning:
                 state = BinState.Empty;
                 timer = respawnDuration;
+                bLight.SetActive(false);
                 Debug.Log("Burning -> Empty");
                 break;
             case BinState.Empty:
