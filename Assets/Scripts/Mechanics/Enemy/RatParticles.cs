@@ -5,6 +5,7 @@ using UnityEngine;
 public class RatParticles : MonoBehaviour
 {
     [SerializeField] PlayerController _player;
+    [SerializeField] PlayerAttack _atk;
 
     HealthManager _healthMngr;
     ParticleSystem ps;
@@ -28,7 +29,7 @@ public class RatParticles : MonoBehaviour
             ParticleSystem.Particle p = _particles[i];
             p.remainingLifetime = 0;
             _healthMngr.DecreaseHealth(1);
-            Debug.Log("RAT EXPLODE!!!!!! ");
+            //Debug.Log("RAT EXPLODE!!!!!! ");
             SoundManager.PlaySound("sfx_ratdeath5");
             _particles[i] = p;
         }

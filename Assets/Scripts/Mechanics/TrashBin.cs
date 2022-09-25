@@ -31,7 +31,7 @@ public class TrashBin : MonoBehaviour
     {
         pLight = gameObject.GetComponent<Light>();
         pLight.enabled = false;
-        bLight = Instantiate(binLight);
+        bLight = Instantiate(binLight, this.transform.position, Quaternion.Euler(90f,0f,0f));
         bLight.transform.parent = transform;
         bLight.SetActive(false);
 

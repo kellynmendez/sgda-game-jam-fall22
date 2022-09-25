@@ -4830,6 +4830,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 0}
+  _atk: {fileID: 0}
 --- !u!1 &8045306885709294672
 GameObject:
   m_ObjectHideFlags: 0

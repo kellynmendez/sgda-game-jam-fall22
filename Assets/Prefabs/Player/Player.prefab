@@ -645,6 +645,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0e4110a98c31624084bb7b589710dda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  trash: {fileID: 1588365081042692745, guid: fc9cde251d595814c92f0f8cb692b91b, type: 3}
 --- !u!1 &3095708666343068805
 GameObject:
   m_ObjectHideFlags: 0
@@ -760,7 +761,7 @@ MonoBehaviour:
   meleeAttack: {fileID: 6380405823749342074, guid: bd742ffb7f0465c439a509949355340c, type: 3}
   range: 1
   attackDuration: 0.1
-  cooldownDuration: 0.5
+  cooldownDuration: 0.25
 --- !u!114 &118358260320639868
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -775,3 +776,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _visualsToDeactivate: {fileID: 319867217108693306}
   _field: {fileID: 1863883424}
+  _currentHealth: 250

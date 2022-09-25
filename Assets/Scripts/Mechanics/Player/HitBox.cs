@@ -27,6 +27,9 @@ public class HitBox : MonoBehaviour
             cHealth.TakeDmg(damage);
         }
 
+        /*?collision.GetComponent<RatParticles>()*/
+        
+
 
     }
 }
