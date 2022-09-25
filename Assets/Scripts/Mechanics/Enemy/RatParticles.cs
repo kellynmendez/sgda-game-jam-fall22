@@ -29,6 +29,7 @@ public class RatParticles : MonoBehaviour
             p.remainingLifetime = 0;
             _healthMngr.DecreaseHealth(1);
             Debug.Log("RAT EXPLODE!!!!!! ");
+            SoundManager.PlaySound("sfx_ratdeath5");
             _particles[i] = p;
         }
 
