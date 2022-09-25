@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -112,6 +112,18 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 3
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -119,12 +131,12 @@ TextureImporter:
       name: FannySwing_Smear_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 4
         y: 96
-        width: 32
-        height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 20
+        height: 11
+      alignment: 9
+      pivot: {x: 0.07161252, y: 0.31105042}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -140,33 +152,12 @@ TextureImporter:
       name: FannySwing_Smear_1
       rect:
         serializedVersion: 2
-        x: 0
+        x: 3
         y: 64
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fff0352c74a149a48891713491eab6b4
-      internalID: -177421531
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FannySwing_Smear_2
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 32
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        width: 20
+        height: 21
+      alignment: 9
+      pivot: {x: 0.4177122, y: 0.06896973}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -179,15 +170,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FannySwing_Smear_3
+      name: FannySwing_Smear_2
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 1
+        y: 34
+        width: 18
+        height: 23
+      alignment: 9
+      pivot: {x: 0.29907456, y: 0.0226462}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -195,6 +186,27 @@ TextureImporter:
       bones: []
       spriteID: 5417f12400b436245915fac5ae208d14
       internalID: -1357109038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FannySwing_Smear_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 29
+        height: 19
+      alignment: 9
+      pivot: {x: 0.23027807, y: 0.50515616}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae633cb5261dc374aa19d3fd5a804b72
+      internalID: 1422162823
       vertices: []
       indices: 
       edges: []
@@ -210,10 +222,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      FannySwing_Smear_2: -1064469884
-      FannySwing_Smear_1: -177421531
+      FannySwing_Smear_5: 771808195
+      FannySwing_Smear_2: -1357109038
+      FannySwing_Smear_1: -1064469884
       FannySwing_Smear_0: -555198676
-      FannySwing_Smear_3: -1357109038
+      FannySwing_Smear_3: 1422162823
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
