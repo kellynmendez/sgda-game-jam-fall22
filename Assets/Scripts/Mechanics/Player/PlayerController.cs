@@ -15,7 +15,6 @@ public class PlayerController : MonoBehaviour
 
     List<TrashBin> _binList;
 
-    bool _canLoot = true;
     float dragCoefficent = 0.5f;
     float appliedAccelerationX = 0f;
     float appliedAccelerationY = 0f;
@@ -66,26 +65,21 @@ public class PlayerController : MonoBehaviour
 
                     // Interact keys
                     // If looting
-                    if (Input.GetKey(_lootTrash) && _canLoot)
+                    if (Input.GetKey(_lootTrash))
                     {
-                        Debug.Log("X was pressed");
-                        Debug.Log("bin list count is " + _binList.Count);
                         // There must be a bin that can be interacted with
                         if (_binList.Count != 0)
                         {
-                            Debug.Log("bin has something in it");
-                            _canLoot = false;
                             TrashBin closestBin = PickTrashBin();
                             if (closestBin != null)
                             {
-                                Debug.Log("Closest trash bin is " + closestBin.gameObject.name);
-                                // Interacting with the closest trash can
+                                // Changing state to trash lock
+                                state = PlayerState.TrashLocked;
+                                // Looting the closest trash can
                                 TrashLock(closestBin, closestBin.emptyingDuration);
-                                Debug.Log("looting trash finished");
-                            }
-                            else
-                            {
-                                Debug.Log("no (full) bin exists to interact with");
+                                // Changing state back to roam
+                                state = PlayerState.FreeRoam;
+                                closestBin = null;
                             }
                         }
                     }
@@ -118,7 +112,6 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.tag == "TrashBin")
         {
-            Debug.Log(collision.gameObject.name + " added to bin list");
             TrashBin bin = collision.gameObject.GetComponent<TrashBin>();
             _binList.Add(bin);
         }
@@ -128,7 +121,6 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.tag == "TrashBin")
         {
-            Debug.Log(collision.gameObject.name + " removed from bin list");
             TrashBin bin = collision.gameObject.GetComponent<TrashBin>();
             _binList.Remove(bin);
         }
@@ -139,7 +131,6 @@ public class PlayerController : MonoBehaviour
         // Player's current position
         Vector2 playerPos = transform.position;
         // Track trash can that is closest and its distance from player
-        //TrashBin closestBin = null;
         TrashBin closestBin = null;
         float smallestDist = -1;
 
@@ -151,7 +142,7 @@ public class PlayerController : MonoBehaviour
                 // If this is the first full bin to be found
                 if (closestBin == null)
                 {
-                    closestBin = _binList[0];
+                    closestBin = check;
                     smallestDist = Vector2.Distance(playerPos, closestBin.transform.position);
                 }
                 // Otherwise see if closer than other bin
@@ -183,13 +174,11 @@ public class PlayerController : MonoBehaviour
 
     public void TrashLock(TrashBin trash, float waitTime)
     {
-        state = PlayerState.TrashLocked;
         StartCoroutine(MoveToTrash(trash, 0.05f, waitTime));
     }
 
     IEnumerator MoveToTrash(TrashBin trash, float travelTime, float waitTime)
     {
-        Debug.Log("lerping to position");
         // Moving to trash can position
         Vector3 oldPosition = transform.position;
         float elapsed = 0;
@@ -212,7 +201,6 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator LootTrash(TrashBin trash, float waitTime)
     {
-        Debug.Log("Emptying the bin");
         trash.EmptyBin();
         while(waitTime > 0 && Input.GetKey(_lootTrash))
         {
@@ -222,22 +210,8 @@ public class PlayerController : MonoBehaviour
 
         if (!Input.GetKey(_lootTrash))
         {
-            Debug.Log("interaction ended early, free roam");
             state = PlayerState.FreeRoam;
             trash.Interrupt();
         }
-
-        // Changing state back to roam
-        state = PlayerState.FreeRoam;
-        Debug.Log("emptying bin is done! starting cooldown");
-
-        StartCoroutine(CooldownTimer(_lootCooldownTime));
-    }
-
-    IEnumerator CooldownTimer(float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        _canLoot = true;
-        Debug.Log("cool down finished");
     }
 }

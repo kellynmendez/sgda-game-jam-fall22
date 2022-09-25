@@ -9,7 +9,7 @@ public class TrashBin : MonoBehaviour
     public float burnDuration = 5;
     public float emptyingDuration = 5;
 
-    private BinState state = BinState.Full;
+    public BinState state = BinState.Full;
     private float timer = 0f;
 
     // Start is called before the first frame update
