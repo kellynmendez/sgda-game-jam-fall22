@@ -26,6 +26,7 @@ public class Health : MonoBehaviour
 
     void Die()
     {
+        SoundManager.PlaySound("character_death");
         if (deathEffect != null)
             Instantiate(deathEffect, transform.position, Quaternion.identity);
         Destroy(gameObject);
@@ -34,6 +35,7 @@ public class Health : MonoBehaviour
     // Returns if the damage killed this instance
     public bool TakeDmg(float dmg)
     {
+        SoundManager.PlaySound("character_hurt");
         if (!isInvincible)
             hp = hp - dmg;
         if (!IsDead() && hurtEffect != null)

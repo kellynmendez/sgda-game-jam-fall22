@@ -15,21 +15,20 @@ public class HitBox : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+
+
+private void OnTriggerEnter2D(Collider2D collision)
     {
         GameObject cObject = collision.gameObject;
         if (cObject.tag == "Rat" || cObject.tag == "Destructible")
         {
+
             Health cHealth = cObject.GetComponent<Health>();
             cHealth.TakeDmg(damage);
         }
-
-        /*?collision.GetComponent<RatParticles>()*/
-        
-
 
     }
 }

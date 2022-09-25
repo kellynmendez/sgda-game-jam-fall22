@@ -998,6 +998,10 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1863883424, guid: e3280f0a44b3c464ab918f2037aeac69, type: 3}
+      propertyPath: m_Parameters.m_Length
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 3095708666343068805, guid: e3280f0a44b3c464ab918f2037aeac69, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1701,8 +1705,28 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8045306885492983175, guid: 16377eda72d5de14d83a6092612768ad, type: 3}
+      propertyPath: CollisionModule.quality
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8045306885492983175, guid: 16377eda72d5de14d83a6092612768ad, type: 3}
+      propertyPath: CollisionModule.colliderForce
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8045306885492983175, guid: 16377eda72d5de14d83a6092612768ad, type: 3}
+      propertyPath: CollisionModule.collisionMessages
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8045306885492983175, guid: 16377eda72d5de14d83a6092612768ad, type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8045306885492983175, guid: 16377eda72d5de14d83a6092612768ad, type: 3}
+      propertyPath: CollisionModule.collidesWithDynamic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8045306885492983175, guid: 16377eda72d5de14d83a6092612768ad, type: 3}
+      propertyPath: CollisionModule.m_EnergyLossOnCollision.scalar
+      value: 0.85
       objectReference: {fileID: 0}
     - target: {fileID: 8045306885492983178, guid: 16377eda72d5de14d83a6092612768ad, type: 3}
       propertyPath: m_Name
@@ -22169,6 +22193,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5009941753794557262, guid: 1a431d2e8079f1b4383f2d62e887625d, type: 3}
+      propertyPath: burnDuration
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5009941753794557263, guid: 1a431d2e8079f1b4383f2d62e887625d, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -22183,7 +22211,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5009941753794557263, guid: 1a431d2e8079f1b4383f2d62e887625d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5009941753794557263, guid: 1a431d2e8079f1b4383f2d62e887625d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -23192,8 +23220,28 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8045306885492983175, guid: 16377eda72d5de14d83a6092612768ad, type: 3}
+      propertyPath: CollisionModule.quality
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8045306885492983175, guid: 16377eda72d5de14d83a6092612768ad, type: 3}
+      propertyPath: CollisionModule.colliderForce
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8045306885492983175, guid: 16377eda72d5de14d83a6092612768ad, type: 3}
+      propertyPath: CollisionModule.collisionMessages
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8045306885492983175, guid: 16377eda72d5de14d83a6092612768ad, type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8045306885492983175, guid: 16377eda72d5de14d83a6092612768ad, type: 3}
+      propertyPath: CollisionModule.collidesWithDynamic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8045306885492983175, guid: 16377eda72d5de14d83a6092612768ad, type: 3}
+      propertyPath: CollisionModule.m_EnergyLossOnCollision.scalar
+      value: 0.85
       objectReference: {fileID: 0}
     - target: {fileID: 8045306885492983178, guid: 16377eda72d5de14d83a6092612768ad, type: 3}
       propertyPath: m_Name
@@ -23577,7 +23625,83 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 4443970413987738848, guid: d82c5e3a92f630248a676f6351407dde, type: 3}
+      propertyPath: audioFiles.Array.data[1].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4443970413987738848, guid: d82c5e3a92f630248a676f6351407dde, type: 3}
+      propertyPath: audioFiles.Array.data[2].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4443970413987738848, guid: d82c5e3a92f630248a676f6351407dde, type: 3}
+      propertyPath: audioFiles.Array.data[3].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4443970413987738848, guid: d82c5e3a92f630248a676f6351407dde, type: 3}
+      propertyPath: audioFiles.Array.data[4].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4443970413987738848, guid: d82c5e3a92f630248a676f6351407dde, type: 3}
+      propertyPath: audioFiles.Array.data[5].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4443970413987738848, guid: d82c5e3a92f630248a676f6351407dde, type: 3}
+      propertyPath: audioFiles.Array.data[6].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4443970413987738848, guid: d82c5e3a92f630248a676f6351407dde, type: 3}
+      propertyPath: audioFiles.Array.data[7].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4443970413987738848, guid: d82c5e3a92f630248a676f6351407dde, type: 3}
+      propertyPath: audioFiles.Array.data[8].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4443970413987738848, guid: d82c5e3a92f630248a676f6351407dde, type: 3}
+      propertyPath: audioFiles.Array.data[9].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4443970413987738848, guid: d82c5e3a92f630248a676f6351407dde, type: 3}
+      propertyPath: audioFiles.Array.data[10].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4443970413987738848, guid: d82c5e3a92f630248a676f6351407dde, type: 3}
+      propertyPath: audioFiles.Array.data[11].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4443970413987738848, guid: d82c5e3a92f630248a676f6351407dde, type: 3}
+      propertyPath: audioFiles.Array.data[12].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4443970413987738848, guid: d82c5e3a92f630248a676f6351407dde, type: 3}
+      propertyPath: audioFiles.Array.data[13].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4443970413987738848, guid: d82c5e3a92f630248a676f6351407dde, type: 3}
+      propertyPath: audioFiles.Array.data[14].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4443970413987738848, guid: d82c5e3a92f630248a676f6351407dde, type: 3}
+      propertyPath: audioFiles.Array.data[15].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4443970413987738848, guid: d82c5e3a92f630248a676f6351407dde, type: 3}
+      propertyPath: audioFiles.Array.data[16].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4443970413987738848, guid: d82c5e3a92f630248a676f6351407dde, type: 3}
+      propertyPath: audioFiles.Array.data[17].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4443970413987738848, guid: d82c5e3a92f630248a676f6351407dde, type: 3}
+      propertyPath: audioFiles.Array.data[18].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4443970413987738848, guid: d82c5e3a92f630248a676f6351407dde, type: 3}
       propertyPath: audioFiles.Array.data[19].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4443970413987738848, guid: d82c5e3a92f630248a676f6351407dde, type: 3}
+      propertyPath: audioFiles.Array.data[20].volume
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5140179432185155088, guid: d82c5e3a92f630248a676f6351407dde, type: 3}
@@ -23771,8 +23895,28 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8045306885492983175, guid: 16377eda72d5de14d83a6092612768ad, type: 3}
+      propertyPath: CollisionModule.quality
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8045306885492983175, guid: 16377eda72d5de14d83a6092612768ad, type: 3}
+      propertyPath: CollisionModule.colliderForce
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8045306885492983175, guid: 16377eda72d5de14d83a6092612768ad, type: 3}
+      propertyPath: CollisionModule.collisionMessages
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8045306885492983175, guid: 16377eda72d5de14d83a6092612768ad, type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8045306885492983175, guid: 16377eda72d5de14d83a6092612768ad, type: 3}
+      propertyPath: CollisionModule.collidesWithDynamic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8045306885492983175, guid: 16377eda72d5de14d83a6092612768ad, type: 3}
+      propertyPath: CollisionModule.m_EnergyLossOnCollision.scalar
+      value: 0.85
       objectReference: {fileID: 0}
     - target: {fileID: 8045306885492983178, guid: 16377eda72d5de14d83a6092612768ad, type: 3}
       propertyPath: m_Name
@@ -23832,8 +23976,28 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8045306885492983175, guid: 16377eda72d5de14d83a6092612768ad, type: 3}
+      propertyPath: CollisionModule.quality
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8045306885492983175, guid: 16377eda72d5de14d83a6092612768ad, type: 3}
+      propertyPath: CollisionModule.colliderForce
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8045306885492983175, guid: 16377eda72d5de14d83a6092612768ad, type: 3}
+      propertyPath: CollisionModule.collisionMessages
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8045306885492983175, guid: 16377eda72d5de14d83a6092612768ad, type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8045306885492983175, guid: 16377eda72d5de14d83a6092612768ad, type: 3}
+      propertyPath: CollisionModule.collidesWithDynamic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8045306885492983175, guid: 16377eda72d5de14d83a6092612768ad, type: 3}
+      propertyPath: CollisionModule.m_EnergyLossOnCollision.scalar
+      value: 0.85
       objectReference: {fileID: 0}
     - target: {fileID: 8045306885492983178, guid: 16377eda72d5de14d83a6092612768ad, type: 3}
       propertyPath: m_Name
@@ -25643,8 +25807,28 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8045306885492983175, guid: 16377eda72d5de14d83a6092612768ad, type: 3}
+      propertyPath: CollisionModule.quality
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8045306885492983175, guid: 16377eda72d5de14d83a6092612768ad, type: 3}
+      propertyPath: CollisionModule.colliderForce
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8045306885492983175, guid: 16377eda72d5de14d83a6092612768ad, type: 3}
+      propertyPath: CollisionModule.collisionMessages
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8045306885492983175, guid: 16377eda72d5de14d83a6092612768ad, type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8045306885492983175, guid: 16377eda72d5de14d83a6092612768ad, type: 3}
+      propertyPath: CollisionModule.collidesWithDynamic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8045306885492983175, guid: 16377eda72d5de14d83a6092612768ad, type: 3}
+      propertyPath: CollisionModule.m_EnergyLossOnCollision.scalar
+      value: 0.85
       objectReference: {fileID: 0}
     - target: {fileID: 8045306885492983178, guid: 16377eda72d5de14d83a6092612768ad, type: 3}
       propertyPath: m_Name
@@ -25788,8 +25972,28 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8045306885492983175, guid: 16377eda72d5de14d83a6092612768ad, type: 3}
+      propertyPath: CollisionModule.quality
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8045306885492983175, guid: 16377eda72d5de14d83a6092612768ad, type: 3}
+      propertyPath: CollisionModule.colliderForce
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8045306885492983175, guid: 16377eda72d5de14d83a6092612768ad, type: 3}
+      propertyPath: CollisionModule.collisionMessages
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8045306885492983175, guid: 16377eda72d5de14d83a6092612768ad, type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8045306885492983175, guid: 16377eda72d5de14d83a6092612768ad, type: 3}
+      propertyPath: CollisionModule.collidesWithDynamic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8045306885492983175, guid: 16377eda72d5de14d83a6092612768ad, type: 3}
+      propertyPath: CollisionModule.m_EnergyLossOnCollision.scalar
+      value: 0.85
       objectReference: {fileID: 0}
     - target: {fileID: 8045306885492983178, guid: 16377eda72d5de14d83a6092612768ad, type: 3}
       propertyPath: m_Name
@@ -26767,8 +26971,32 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8045306885492983175, guid: 16377eda72d5de14d83a6092612768ad, type: 3}
+      propertyPath: CollisionModule.quality
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8045306885492983175, guid: 16377eda72d5de14d83a6092612768ad, type: 3}
+      propertyPath: CollisionModule.colliderForce
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8045306885492983175, guid: 16377eda72d5de14d83a6092612768ad, type: 3}
+      propertyPath: TriggerModule.colliderQueryMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8045306885492983175, guid: 16377eda72d5de14d83a6092612768ad, type: 3}
+      propertyPath: CollisionModule.collisionMessages
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8045306885492983175, guid: 16377eda72d5de14d83a6092612768ad, type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8045306885492983175, guid: 16377eda72d5de14d83a6092612768ad, type: 3}
+      propertyPath: CollisionModule.collidesWithDynamic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8045306885492983175, guid: 16377eda72d5de14d83a6092612768ad, type: 3}
+      propertyPath: CollisionModule.m_EnergyLossOnCollision.scalar
+      value: 0.85
       objectReference: {fileID: 0}
     - target: {fileID: 8045306885492983178, guid: 16377eda72d5de14d83a6092612768ad, type: 3}
       propertyPath: m_Name
@@ -34950,8 +35178,28 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8045306885492983175, guid: 16377eda72d5de14d83a6092612768ad, type: 3}
+      propertyPath: CollisionModule.quality
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8045306885492983175, guid: 16377eda72d5de14d83a6092612768ad, type: 3}
+      propertyPath: CollisionModule.colliderForce
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8045306885492983175, guid: 16377eda72d5de14d83a6092612768ad, type: 3}
+      propertyPath: CollisionModule.collisionMessages
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8045306885492983175, guid: 16377eda72d5de14d83a6092612768ad, type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8045306885492983175, guid: 16377eda72d5de14d83a6092612768ad, type: 3}
+      propertyPath: CollisionModule.collidesWithDynamic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8045306885492983175, guid: 16377eda72d5de14d83a6092612768ad, type: 3}
+      propertyPath: CollisionModule.m_EnergyLossOnCollision.scalar
+      value: 0.85
       objectReference: {fileID: 0}
     - target: {fileID: 8045306885492983178, guid: 16377eda72d5de14d83a6092612768ad, type: 3}
       propertyPath: m_Name

@@ -44,7 +44,7 @@ ParticleSystemForceField:
     m_Shape: 2
     m_StartRange: 0
     m_EndRange: 6
-    m_Length: 0.01
+    m_Length: 1
     m_GravityFocus: 0
     m_RotationRandomness: {x: 0, y: 0}
     m_DirectionCurveX:
@@ -573,7 +573,7 @@ ParticleSystemForceField:
     m_Shape: 2
     m_StartRange: 0
     m_EndRange: 5
-    m_Length: 0.01
+    m_Length: 1
     m_GravityFocus: 0
     m_RotationRandomness: {x: 0, y: 0}
     m_DirectionCurveX:

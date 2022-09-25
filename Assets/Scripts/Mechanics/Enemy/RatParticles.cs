@@ -11,18 +11,24 @@ public class RatParticles : MonoBehaviour
     ParticleSystem ps;
 
     List<ParticleSystem.Particle> _particles = new List<ParticleSystem.Particle>();
+    List<ParticleSystem.Particle> _particles2 = new List<ParticleSystem.Particle>();
+    public List<ParticleCollisionEvent> collisionEvents;
+    
 
     private void Awake()
     {
         ps = transform.GetComponent<ParticleSystem>();
         _player = FindObjectOfType<PlayerController>();
         _healthMngr = _player.GetComponent<HealthManager>();
+        collisionEvents = new List<ParticleCollisionEvent>();
         GetComponent<ParticleSystem>().trigger.SetCollider(0, _player.gameObject.transform);
     }
 
     private void OnParticleTrigger()
     {
         int triggeredParticles = ps.GetTriggerParticles(ParticleSystemTriggerEventType.Enter, _particles);
+
+       
 
         for (int i = 0; i < triggeredParticles; i++)
         {

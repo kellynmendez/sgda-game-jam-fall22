@@ -26,6 +26,7 @@ public class PlayerAttack : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Z) && canAttack && playerMov.GetState() == PlayerController.PlayerState.FreeRoam)
         {
+            SoundManager.PlaySound("character_attack_swing");
             canAttack = false;
             StartCoroutine(CooldownTimer(cooldownDuration));
             Vector3 spawnPoint = playerMov.velocity.normalized * range;
@@ -39,13 +40,32 @@ public class PlayerAttack : MonoBehaviour
             GameObject attackInstance = Instantiate(meleeAttack, spawnPoint, Quaternion.Euler(new Vector3(0, 0, angle)));
 
             if (angle <= 135 && angle >= 45)
-            { attackInstance.GetComponent<SpriteRenderer>().flipY = false; }
+            { attackInstance.GetComponent<SpriteRenderer>().flipY = false;
+                Vector3 temp = attackInstance.transform.position;
+                temp = new Vector3(temp.x, temp.y + 1, temp.z);
+                attackInstance.transform.position = temp;
+                    }
+
             if (angle <= -45 && angle >= -135)
-            { attackInstance.GetComponent<SpriteRenderer>().flipY = true; }
+            { attackInstance.GetComponent<SpriteRenderer>().flipY = true;
+                Vector3 temp = attackInstance.transform.position;
+                temp = new Vector3(temp.x, temp.y - 1   , temp.z);
+                attackInstance.transform.position = temp;
+            }
             if (angle >= 135 && angle <= 180 || angle <= -135 && angle >= -180)
-            { attackInstance.GetComponent<SpriteRenderer>().flipY = true; }
+            { 
+                attackInstance.GetComponent<SpriteRenderer>().flipY = true;
+                Vector3 temp = attackInstance.transform.position;
+                temp = new Vector3(temp.x - 1, temp.y, temp.z);
+                attackInstance.transform.position = temp;
+            }
             if (angle <= 45 && angle >= 0 || angle >= -45 && angle <= 0)
-            { attackInstance.GetComponent<SpriteRenderer>().flipX = true; }
+            {
+                attackInstance.GetComponent<SpriteRenderer>().flipX = true;
+                Vector3 temp = attackInstance.transform.position;
+                temp = new Vector3(temp.x + 1, temp.y, temp.z);
+                attackInstance.transform.position = temp;
+            }
 
             attackInstance.transform.SetParent(transform);
             Destroy(attackInstance, attackDuration);
