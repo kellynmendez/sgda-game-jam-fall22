@@ -5,8 +5,8 @@ using UnityEngine;
 public class RatGrowth : MonoBehaviour
 {
     ParticleSystem system;
-    float intercept = 0;
-    float logBase = 5f;
+    public float intercept = 0;
+    public float logBase = 5f;
     int lastScore = 0;
     // Start is called before the first frame update
     void Start()
@@ -21,12 +21,12 @@ public class RatGrowth : MonoBehaviour
         {
             ParticleSystem.EmissionModule emissions = system.emission;
             emissions.rateOverTime = calculate();
-            lastScore = ScoreManager.score;
+            lastScore = ScoreManager._scoreOutput;
         }
     }
 
     float calculate()
     {
-        return Mathf.Log(ScoreManager.score / intercept, logBase);
+        return Mathf.Log(ScoreManager._scoreOutput / intercept, logBase);
     }
 }
