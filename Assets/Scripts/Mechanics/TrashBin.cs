@@ -5,7 +5,12 @@ using UnityEngine;
 
 public class TrashBin : MonoBehaviour
 {
-    BinState state = BinState.Full;
+    public float respawnDuration = 5;
+    public float burnDuration = 5;
+    public float emptyingDuration = 5;
+
+    private BinState state = BinState.Full;
+    private float timer = 0f;
 
     // Start is called before the first frame update
     public enum BinState{
@@ -17,13 +22,18 @@ public class TrashBin : MonoBehaviour
 
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (state != BinState.Full)
+        {
+            timer -= Time.deltaTime;
+            if (timer <= 0)
+                changeState();
+        }
     }
 
     public BinState GetState()
@@ -31,18 +41,63 @@ public class TrashBin : MonoBehaviour
         return state;
     }
 
-    public void Burn()
+    public bool Burn()
     {
+        if (state == BinState.Full)
+        {
+            state = BinState.Burning;
+            timer = burnDuration;
+            Debug.Log("Full -> Burning");
+            return true;
+        }
+
+        return false;
+    }
+
+    public bool Interrupt()
+    {
+        if (state == BinState.Emptying) {
+            state = BinState.Empty;
+            timer = respawnDuration;
+            Debug.Log("Full -> Emptying via Interuption");
+            return true;
+         }
+
+        return false;
 
     }
 
-    public void Interrupt()
+    public bool EmptyBin()
     {
+        if (state == BinState.Full)
+        {
+            state = BinState.Emptying;
+            timer = emptyingDuration;
+            Debug.Log("Full -> Emptying");
+            return true;
+        }
 
+        return false;
     }
 
-    internal void EmptyBin()
+    private void changeState() //Change states burning, emptying, and empty to their next available state
     {
-        
+        switch (state)
+        {
+            case BinState.Emptying:
+                state = BinState.Empty;
+                timer = respawnDuration;
+                Debug.Log("Emptying -> Empty");
+                break;
+            case BinState.Burning:
+                state = BinState.Empty;
+                timer = respawnDuration;
+                Debug.Log("Burning -> Empty");
+                break;
+            case BinState.Empty:
+                state = BinState.Full;
+                Debug.Log("Empty -> Full");
+                break;
+        }
     }
 }
