@@ -340,8 +340,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _currentScoreText: {fileID: 3710545867839954453}
   _graphic: {fileID: 3731275100871502667}
-  _healthBar: {fileID: 0}
-  _trashProgressbar: {fileID: 0}
+  _healthBar: {fileID: 643916777607677358}
+  _trashProgressbar: {fileID: 5109755465443607330}
 --- !u!1 &3731275100871502645
 GameObject:
   m_ObjectHideFlags: 0
