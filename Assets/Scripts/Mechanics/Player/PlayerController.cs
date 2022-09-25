@@ -76,17 +76,25 @@ public class PlayerController : MonoBehaviour
                                 // Changing state to trash lock
                                 state = PlayerState.TrashLocked;
                                 // Looting the closest trash can
-                                TrashLock(closestBin, closestBin.emptyingDuration);
+                                StartCoroutine(MoveToLootTrash(closestBin, 0.05f, closestBin.emptyingDuration));
                                 // Changing state back to roam
                                 state = PlayerState.FreeRoam;
-                                closestBin = null;
                             }
                         }
                     }
                     // If lighting
                     if (Input.GetKey(_lightTrash))
                     {
-
+                        // There must be a bin that can be interacted with
+                        if (_binList.Count != 0)
+                        {
+                            TrashBin closestBin = PickTrashBin();
+                            if (closestBin != null)
+                            {
+                                // Lighting the closest trash can
+                                StartCoroutine(MoveToLightTrash(closestBin, 0.05f));
+                            }
+                        }
                     }
                 }
             }
@@ -172,12 +180,7 @@ public class PlayerController : MonoBehaviour
         velocity += newVelocity;
     }
 
-    public void TrashLock(TrashBin trash, float waitTime)
-    {
-        StartCoroutine(MoveToTrash(trash, 0.05f, waitTime));
-    }
-
-    IEnumerator MoveToTrash(TrashBin trash, float travelTime, float waitTime)
+    IEnumerator MoveToLootTrash(TrashBin trash, float travelTime, float waitTime)
     {
         // Moving to trash can position
         Vector3 oldPosition = transform.position;
@@ -196,6 +199,20 @@ public class PlayerController : MonoBehaviour
         else
         {
             state = PlayerState.FreeRoam;
+        }
+    }
+
+    IEnumerator MoveToLightTrash(TrashBin trash, float travelTime)
+    {
+        trash.Burn();
+        // Moving to trash can position
+        Vector3 oldPosition = transform.position;
+        float elapsed = 0;
+        while (elapsed < travelTime)
+        {
+            transform.position = Vector3.Lerp(oldPosition, trash.transform.position, elapsed / travelTime);
+            elapsed += Time.deltaTime;
+            yield return null;
         }
     }
 
