@@ -11,6 +11,13 @@ public class TrashBin : MonoBehaviour
     public float burnDuration = 5;
     public float emptyingDuration = 5;
 
+    [SerializeField] Sprite _barrel1;
+    [SerializeField] Sprite _barrel2;
+    [SerializeField] Sprite _barrel3;
+    [SerializeField] Sprite _barrel4;
+
+    SpriteRenderer _TEMP;
+
     private HUDManager _hudMngr;
 
     public BinState state = BinState.Full;
@@ -34,6 +41,7 @@ public class TrashBin : MonoBehaviour
         bLight = Instantiate(binLight, this.transform.position, Quaternion.Euler(90f,0f,0f));
         bLight.transform.parent = transform;
         bLight.SetActive(false);
+        _TEMP = gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>();
 
         _hudMngr = FindObjectOfType<HUDManager>();
     }
@@ -60,6 +68,8 @@ public class TrashBin : MonoBehaviour
         {
             state = BinState.Burning;
 
+            _TEMP.sprite = _barrel4;
+
             SoundManager.PlaySound("sfx_barrel_lit2");
             SoundManager.PlaySound("sfx_barrel_fireambience");
             timer = burnDuration;
@@ -77,6 +87,7 @@ public class TrashBin : MonoBehaviour
         if (state == BinState.Emptying) {
             _hudMngr.ExitTrashEarly();
             state = BinState.Empty;
+            _TEMP.sprite = _barrel2;
             timer = respawnDuration;
             Debug.Log("Emptying -> Empty via Interuption");
             return true;
@@ -106,11 +117,13 @@ public class TrashBin : MonoBehaviour
         {
             case BinState.Emptying:
                 state = BinState.Empty;
+                _TEMP.sprite = _barrel2;
                 timer = respawnDuration;
                 Debug.Log("Emptying -> Empty");
                 break;
             case BinState.Burning:
                 state = BinState.Empty;
+                _TEMP.sprite = _barrel3;
                 timer = respawnDuration;
                 bLight.SetActive(false);
                 pLight.enabled = false;
@@ -118,6 +131,7 @@ public class TrashBin : MonoBehaviour
                 break;
             case BinState.Empty:
                 state = BinState.Full;
+                _TEMP.sprite = _barrel1;
                 Debug.Log("Empty -> Full");
                 break;
         }

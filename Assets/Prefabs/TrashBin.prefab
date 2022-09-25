@@ -52,6 +52,10 @@ MonoBehaviour:
   respawnDuration: 5
   burnDuration: 5
   emptyingDuration: 5
+  _barrel1: {fileID: 21300000, guid: d985ccb3e91b559429f48ddedefeb218, type: 3}
+  _barrel2: {fileID: 21300000, guid: 017021d082f9b874e910ece02002b200, type: 3}
+  _barrel3: {fileID: 21300000, guid: 6615fdc7e52a81e46b4b979893c50392, type: 3}
+  _barrel4: {fileID: 21300000, guid: b2343454fe7a8b749aec831d23b21d29, type: 3}
   state: 0
 --- !u!70 &3082729613275479482
 CapsuleCollider2D:
