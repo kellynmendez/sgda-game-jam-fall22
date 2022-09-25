@@ -47,10 +47,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3218d1f43e37fd48b6c38eec3c45cc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  binLight: {fileID: 0}
+  binLight: {fileID: 1395487389768926886, guid: 2ec882f729fa7864f8ba1958341933ae, type: 3}
   respawnDuration: 5
   burnDuration: 5
   emptyingDuration: 5
+  state: 0
 --- !u!58 &5009941753794557261
 CircleCollider2D:
   m_ObjectHideFlags: 0

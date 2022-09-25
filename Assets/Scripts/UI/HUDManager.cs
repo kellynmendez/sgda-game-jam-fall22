@@ -2,14 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class HUDManager : MonoBehaviour
 {
-    [SerializeField] Text _currentScoreText;
+    [SerializeField] TMP_Text _currentScoreText;
     [SerializeField] MaskableGraphic _graphic = null;
+    [SerializeField] Slider slider;
+
+    HealthManager _healthMngr;
+    int _health;
 
     private float _deathPauseTime = 1f;
     private int _score = ScoreManager._scoreOutput;
+
+    private void Awake()
+    {
+        _healthMngr = FindObjectOfType<HealthManager>();
+        _health = _healthMngr.GetCurrentHealth();
+        SetMaxHealth();
+
+        UpdateScoreText(0);
+    }
 
     private void Update()
     {
@@ -22,7 +36,18 @@ public class HUDManager : MonoBehaviour
 
     public void UpdateScoreText(int score)
     {
-        _currentScoreText.text = score.ToString();
+        _currentScoreText.text = string.Format("{0:000000}", score);
+    }
+
+    private void SetMaxHealth()
+    {
+        slider.maxValue = _health;
+        slider.value = _health;
+    }
+
+    public void SetHealth(int health)
+    {
+        slider.value = health;
     }
 
     public void PlayDeathFX()
