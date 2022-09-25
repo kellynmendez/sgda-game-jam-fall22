@@ -60,6 +60,8 @@ public class TrashBin : MonoBehaviour
         {
             state = BinState.Burning;
 
+            SoundManager.PlaySound("sfx_barrel_lit2");
+            SoundManager.PlaySound("sfx_barrel_fireambience");
             timer = burnDuration;
             bLight.SetActive(true);
             pLight.enabled = true;
