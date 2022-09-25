@@ -73,7 +73,7 @@ public class TrashBin : MonoBehaviour
     public bool Interrupt()
     {
         if (state == BinState.Emptying) {
-
+            _hudMngr.ExitTrashEarly();
             state = BinState.Empty;
             timer = respawnDuration;
             Debug.Log("Emptying -> Empty via Interuption");
@@ -88,7 +88,7 @@ public class TrashBin : MonoBehaviour
     {
         if (state == BinState.Full)
         {
-
+            _hudMngr.StartTrashProgressBar(emptyingDuration);
             state = BinState.Emptying;
             timer = emptyingDuration;
             Debug.Log("Full -> Emptying");

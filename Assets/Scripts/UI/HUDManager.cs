@@ -10,6 +10,7 @@ public class HUDManager : MonoBehaviour
     [SerializeField] MaskableGraphic _graphic = null;
     [SerializeField] Slider _healthBar;
     [SerializeField] Slider _trashProgressbar;
+    bool _exitTrashEarly = false;
 
     HealthManager _healthMngr;
     int _health;
@@ -51,9 +52,24 @@ public class HUDManager : MonoBehaviour
         _healthBar.value = health;
     }
 
-    public void StartTrashProgressBar()
+    public void StartTrashProgressBar(float duration)
     {
-        //StartCoroutine(IncrementProgressBar(_trashProgressbar, ));
+        ActivateTrashBar();
+        StartCoroutine(IncrementProgressBar(_trashProgressbar, duration, DeactivateTrashBar));
+    }
+
+    public void ExitTrashEarly()
+    {
+        _exitTrashEarly = true;
+    }
+
+    public void ActivateTrashBar()
+    {
+        _trashProgressbar.gameObject.SetActive(true);
+    }
+    public void DeactivateTrashBar()
+    {
+        _trashProgressbar.gameObject.SetActive(false);
     }
 
     public void PlayDeathFX()
@@ -70,15 +86,22 @@ public class HUDManager : MonoBehaviour
         Time.timeScale = 0f;
     }
 
-    public static IEnumerator IncrementProgressBar(Slider slider, float fillSpeed, System.Action OnComplete = null)
+    public IEnumerator IncrementProgressBar(Slider slider, float duration, System.Action OnComplete = null)
     {
+        
         // intial value
         slider.value = 0;
 
-        while (slider.value < 1)
+        while (!_exitTrashEarly && slider.value < 1)
         {
-            slider.value += fillSpeed * Time.deltaTime;
+            slider.value += Time.deltaTime / duration;
             yield return null;
+        }
+
+        if (_exitTrashEarly)
+        {
+            _exitTrashEarly = false;
+            yield break;
         }
 
         // final value
