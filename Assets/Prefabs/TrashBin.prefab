@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5009941753794557263}
   - component: {fileID: 5009941753794557262}
-  - component: {fileID: 5009941753794557261}
+  - component: {fileID: 3082729613275479482}
   - component: {fileID: 8565786020078400609}
-  m_Layer: 0
+  - component: {fileID: -7327308133091623603}
+  m_Layer: 7
   m_Name: TrashBin
   m_TagString: TrashBin
   m_Icon: {fileID: 0}
@@ -31,7 +32,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5009941754309488055}
+  - {fileID: 3148268959850362572}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -47,12 +48,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3218d1f43e37fd48b6c38eec3c45cc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  binLight: {fileID: 0}
+  binLight: {fileID: 1395487389768926886, guid: 2ec882f729fa7864f8ba1958341933ae, type: 3}
   respawnDuration: 5
   burnDuration: 5
   emptyingDuration: 5
---- !u!58 &5009941753794557261
-CircleCollider2D:
+  state: 0
+--- !u!70 &3082729613275479482
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -61,12 +63,12 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.5
+  m_Offset: {x: 0.05, y: 0.4}
+  m_Size: {x: 1.05, y: 1.89}
+  m_Direction: 0
 --- !u!108 &8565786020078400609
 Light:
   m_ObjectHideFlags: 0
@@ -129,7 +131,27 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!1 &5009941754309488056
+--- !u!114 &-7327308133091623603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5009941753794557296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 1
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
+--- !u!1 &5351705469108682097
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -137,37 +159,37 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5009941754309488055}
-  - component: {fileID: 5009941754309488054}
-  m_Layer: 0
-  m_Name: Circle
+  - component: {fileID: 3148268959850362572}
+  - component: {fileID: 3710152567373244529}
+  m_Layer: 7
+  m_Name: trashcan_full
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5009941754309488055
+--- !u!4 &3148268959850362572
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5009941754309488056}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_GameObject: {fileID: 5351705469108682097}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.04, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5009941753794557263}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &5009941754309488054
+--- !u!212 &3710152567373244529
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5009941754309488056}
+  m_GameObject: {fileID: 5351705469108682097}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -202,12 +224,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0, g: 0.04857397, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: d985ccb3e91b559429f48ddedefeb218, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

@@ -11,6 +11,8 @@ public class TrashBin : MonoBehaviour
     public float burnDuration = 5;
     public float emptyingDuration = 5;
 
+    private HUDManager _hudMngr;
+
     public BinState state = BinState.Full;
     private float timer = 0f;
     private GameObject bLight;
@@ -32,6 +34,8 @@ public class TrashBin : MonoBehaviour
         bLight = Instantiate(binLight);
         bLight.transform.parent = transform;
         bLight.SetActive(false);
+
+        _hudMngr = FindObjectOfType<HUDManager>();
     }
 
     // Update is called once per frame
@@ -56,6 +60,8 @@ public class TrashBin : MonoBehaviour
         {
             state = BinState.Burning;
 
+            SoundManager.PlaySound("sfx_barrel_lit2");
+            SoundManager.PlaySound("sfx_barrel_fireambience");
             timer = burnDuration;
             bLight.SetActive(true);
             pLight.enabled = true;
@@ -69,6 +75,7 @@ public class TrashBin : MonoBehaviour
     public bool Interrupt()
     {
         if (state == BinState.Emptying) {
+            _hudMngr.ExitTrashEarly();
             state = BinState.Empty;
             timer = respawnDuration;
             Debug.Log("Emptying -> Empty via Interuption");
@@ -83,6 +90,7 @@ public class TrashBin : MonoBehaviour
     {
         if (state == BinState.Full)
         {
+            _hudMngr.StartTrashProgressBar(emptyingDuration);
             state = BinState.Emptying;
             timer = emptyingDuration;
             Debug.Log("Full -> Emptying");
