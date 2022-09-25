@@ -55,7 +55,7 @@ public class HUDManager : MonoBehaviour
     public void StartTrashProgressBar(float duration)
     {
         ActivateTrashBar();
-        StartCoroutine(IncrementProgressBar(_trashProgressbar, duration, DeactivateTrashBar));
+        StartCoroutine(IncrementProgressBar(_trashProgressbar, duration));
     }
 
     public void ExitTrashEarly()
@@ -101,11 +101,13 @@ public class HUDManager : MonoBehaviour
         if (_exitTrashEarly)
         {
             _exitTrashEarly = false;
+            DeactivateTrashBar();
             yield break;
         }
 
         // final value
         slider.value = 1;
+        DeactivateTrashBar();
 
         if (OnComplete != null) { OnComplete(); }
         yield break;
