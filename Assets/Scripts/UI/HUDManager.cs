@@ -8,14 +8,21 @@ public class HUDManager : MonoBehaviour
     [SerializeField] Text _currentScoreText;
     [SerializeField] MaskableGraphic _graphic = null;
 
-    private CameraMovement _camera;
-
     private float _deathPauseTime = 1f;
-    int _currentScore;
+    private int _score = ScoreManager._scoreOutput;
 
-    private void Awake()
+    private void Update()
     {
-        _camera = FindObjectOfType<CameraMovement>();
+        if(_score != ScoreManager._scoreOutput)
+        {
+            _score = ScoreManager._scoreOutput;
+            UpdateScoreText(_score);
+        }
+    }
+
+    public void UpdateScoreText(int score)
+    {
+        _currentScoreText.text = score.ToString();
     }
 
     public void PlayDeathFX()
@@ -26,10 +33,8 @@ public class HUDManager : MonoBehaviour
         StartCoroutine(PauseScreen());
     }
 
-
     IEnumerator PauseScreen()
     {
-        Debug.Log("pausing screen");
         yield return new WaitForSeconds(_deathPauseTime);
         Time.timeScale = 0f;
     }
