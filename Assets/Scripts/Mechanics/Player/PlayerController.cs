@@ -71,6 +71,10 @@ public class PlayerController : MonoBehaviour
                         LootTrash();
                         Debug.Log("looting trash finished");
                     }
+                    if (Input.GetKey(_lightTrash))
+                    {
+
+                    }
                 }
             }
         }
