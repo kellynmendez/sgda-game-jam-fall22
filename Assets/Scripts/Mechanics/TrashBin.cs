@@ -15,6 +15,8 @@ public class TrashBin : MonoBehaviour
     private float timer = 0f;
     private GameObject bLight;
 
+    Light pLight;
+
     // Start is called before the first frame update
     public enum BinState{
         Full = 0,
@@ -25,6 +27,8 @@ public class TrashBin : MonoBehaviour
 
     void Start()
     {
+        pLight = gameObject.GetComponent<Light>();
+        pLight.enabled = false;
         bLight = Instantiate(binLight);
         bLight.transform.parent = transform;
         bLight.SetActive(false);
@@ -55,6 +59,7 @@ public class TrashBin : MonoBehaviour
 
             timer = burnDuration;
             bLight.SetActive(true);
+            pLight.enabled = true;
             Debug.Log("Full -> Burning");
             return true;
         }
@@ -101,6 +106,7 @@ public class TrashBin : MonoBehaviour
                 state = BinState.Empty;
                 timer = respawnDuration;
                 bLight.SetActive(false);
+                pLight.enabled = false;
                 Debug.Log("Burning -> Empty");
                 break;
             case BinState.Empty:
