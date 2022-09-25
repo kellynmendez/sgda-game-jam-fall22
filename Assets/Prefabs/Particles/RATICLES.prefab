@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8045306885492983175}
   - component: {fileID: 8045306885492983176}
   - component: {fileID: 8045306885492983177}
+  - component: {fileID: 2445118920503140385}
   m_Layer: 7
   m_Name: RATICLES
   m_TagString: Untagged
@@ -4766,7 +4767,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 2af60bb1b63c8b74894af4d5e9fe796c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4831,6 +4832,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _player: {fileID: 0}
   _atk: {fileID: 0}
+--- !u!114 &2445118920503140385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8045306885492983178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9be96acbf4833384782b082bd2098d69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  intercept: 2
+  logBase: 20
 --- !u!1 &8045306885709294672
 GameObject:
   m_ObjectHideFlags: 0
