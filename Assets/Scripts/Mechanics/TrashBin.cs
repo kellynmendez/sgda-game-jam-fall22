@@ -32,7 +32,6 @@ public class TrashBin : MonoBehaviour
         bLight = Instantiate(binLight);
         bLight.transform.parent = transform;
         bLight.SetActive(false);
-        Burn();
     }
 
     // Update is called once per frame
