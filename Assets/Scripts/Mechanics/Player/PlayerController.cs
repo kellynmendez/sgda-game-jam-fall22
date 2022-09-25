@@ -227,6 +227,8 @@ public class PlayerController : MonoBehaviour
             trash.Interrupt();
         }
 
+        // Changing state back to roam
+        state = PlayerState.FreeRoam;
         Debug.Log("emptying bin is done! starting cooldown");
 
         StartCoroutine(CooldownTimer(_lootCooldownTime));
