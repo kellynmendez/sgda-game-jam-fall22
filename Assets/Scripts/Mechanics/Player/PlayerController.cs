@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float maxVelocity = 5f;
     [SerializeField] float acceleration = 1f;
 
+    [SerializeField] ParticleSystem _deathParticles = null;
+
     public Vector3 velocity = Vector3.zero;
 
     Rigidbody2D body;
@@ -86,6 +88,11 @@ public class PlayerController : MonoBehaviour
             if (_healthMgr.IsPlayerDead())
             {
                 state = PlayerState.Dead;
+                // Playing death particles
+                if (_deathParticles != null)
+                {
+                    _deathParticles.Play();
+                }
             }
             else
             {

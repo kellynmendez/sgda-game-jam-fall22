@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class HUDManager : MonoBehaviour
 {
@@ -13,14 +14,16 @@ public class HUDManager : MonoBehaviour
     bool _exitTrashEarly = false;
 
     HealthManager _healthMngr;
+    CameraMovement _camera;
     int _health;
 
-    private float _deathPauseTime = 1f;
+    private float _deathPauseTime = 1.5f;
     private int _score = ScoreManager._scoreOutput;
 
     private void Awake()
     {
         _healthMngr = FindObjectOfType<HealthManager>();
+        _camera = FindObjectOfType<CameraMovement>();
         _health = _healthMngr.GetCurrentHealth();
         SetMaxHealth();
 
@@ -75,7 +78,11 @@ public class HUDManager : MonoBehaviour
     public void PlayDeathFX()
     {
         // Change screen color
-        _graphic.color = new Color(1, 0, 0, .2f);
+        Color deadGraphic = new Color(1, 0, 0, .2f);
+        deadGraphic.a = 0.2f;
+        _graphic.color = deadGraphic;
+        // Camera shake
+        _camera.UndirectedShake(1, 0.2f);
         // Start pause
         StartCoroutine(PauseScreen());
     }
@@ -84,6 +91,7 @@ public class HUDManager : MonoBehaviour
     {
         yield return new WaitForSeconds(_deathPauseTime);
         Time.timeScale = 0f;
+        SceneManager.LoadScene(2);
     }
 
     public IEnumerator IncrementProgressBar(Slider slider, float duration, System.Action OnComplete = null)
