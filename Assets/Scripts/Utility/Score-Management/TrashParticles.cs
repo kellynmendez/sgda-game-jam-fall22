@@ -27,7 +27,6 @@ public class TrashParticles : MonoBehaviour
             p.remainingLifetime = 0;
             SoundManager.PlaySound("character_collect4");
             ScoreManager.IncreaseScore(1);
-            Debug.Log("Trash Score: " + ScoreManager.score);
             _particles[i] = p;
         }
 
