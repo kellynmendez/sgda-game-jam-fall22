@@ -925,6 +925,8 @@ GameObject:
   - component: {fileID: 897966787}
   - component: {fileID: 897966789}
   - component: {fileID: 897966788}
+  - component: {fileID: 897966791}
+  - component: {fileID: 897966790}
   m_Layer: 5
   m_Name: ContinueInfo_txt
   m_TagString: Untagged
@@ -950,7 +952,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -517.5}
-  m_SizeDelta: {x: 1322.3, y: 50}
+  m_SizeDelta: {x: 1504, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &897966788
 MonoBehaviour:
@@ -972,7 +974,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press Start to Play Again
+  m_text: Press Start to Return to Main Menu
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 40c3974125e3ee546a847e52c1c5b95a, type: 2}
   m_sharedMaterial: {fileID: 6146199722349061341, guid: 40c3974125e3ee546a847e52c1c5b95a, type: 2}
@@ -1049,6 +1051,30 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 897966786}
   m_CullTransparentMesh: 1
+--- !u!225 &897966790
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 897966786}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &897966791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 897966786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ece6ff36b1d21a44c8d30589c9013fc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &901708750
 GameObject:
   m_ObjectHideFlags: 0
