@@ -6,16 +6,16 @@ using UnityEngine.SceneManagement;
 public class CreditsUI : MonoBehaviour
 {
     [SerializeField] float _duration = 10f;
-    RectTransform _transform;
+    Transform _transform;
     Vector3 from;
     Vector3 to;
     bool creditsDone = false;
 
     private void Awake()
     {
-        _transform = GetComponent<RectTransform>();
-        from = _transform.position;
-        to = new Vector3(_transform.position.x, _transform.position.y + 3000, _transform.position.z);
+        _transform = gameObject.transform.GetChild(0).transform;
+        from = gameObject.transform.GetChild(1).position;
+        to = gameObject.transform.GetChild(2).position;
         StartCoroutine(LerpPosition(_transform, from, to, _duration));
     }
 
