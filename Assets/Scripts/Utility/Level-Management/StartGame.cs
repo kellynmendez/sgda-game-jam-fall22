@@ -5,6 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class StartGame : MonoBehaviour
 {
+    private void Awake()
+    {
+        Time.timeScale = 1f;
+    }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Return))
