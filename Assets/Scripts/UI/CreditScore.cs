@@ -9,7 +9,7 @@ public class CreditScore : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _currentScoreText.text = ScoreManager._scoreOutput.ToString();
+        _currentScoreText.text = string.Format("{0:000000}", ScoreManager._scoreOutput);
     }
 
     // Update is called once per frame

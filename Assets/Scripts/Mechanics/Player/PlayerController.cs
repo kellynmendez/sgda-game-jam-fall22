@@ -22,6 +22,8 @@ public class PlayerController : MonoBehaviour
     bool isDigging = false;
     KeyCode _lightTrash = KeyCode.Q;
     KeyCode _lootTrash = KeyCode.E;
+    bool lootKeyStillHeld = false;
+    bool lightKeyStillHeld = false;
 
     public enum PlayerState
     {
@@ -103,8 +105,9 @@ public class PlayerController : MonoBehaviour
 
                     // Interact keys
                     // If looting
-                    if (Input.GetKey(_lootTrash))
+                    if (Input.GetKey(_lootTrash) && !lootKeyStillHeld)
                     {
+                        lootKeyStillHeld = true;
                         // There must be a bin that can be interacted with
                         if (_binList.Count != 0)
                         {
@@ -118,9 +121,14 @@ public class PlayerController : MonoBehaviour
                             }
                         }
                     }
-                    // If lighting
-                    if (Input.GetKey(_lightTrash))
+                    if (!Input.GetKey(_lootTrash) && lootKeyStillHeld)
                     {
+                        lootKeyStillHeld = false;
+                    }
+                    // If lighting
+                    if (Input.GetKey(_lightTrash) && !lightKeyStillHeld)
+                    {
+                        lightKeyStillHeld = true;
                         // There must be a bin that can be interacted with
                         if (_binList.Count != 0)
                         {
@@ -131,6 +139,10 @@ public class PlayerController : MonoBehaviour
                                 StartCoroutine(MoveToLightTrash(closestBin, 0.05f));
                             }
                         }
+                    }
+                    if (!Input.GetKey(_lightTrash) && lightKeyStillHeld)
+                    {
+                        lightKeyStillHeld = false;
                     }
                 }
             }
@@ -158,6 +170,7 @@ public class PlayerController : MonoBehaviour
         {
             TrashBin bin = collision.gameObject.GetComponent<TrashBin>();
             _binList.Add(bin);
+            Debug.Log("trash bin " + bin.gameObject.name + "ADDED to list.");
         }
     }
 
@@ -167,6 +180,7 @@ public class PlayerController : MonoBehaviour
         {
             TrashBin bin = collision.gameObject.GetComponent<TrashBin>();
             _binList.Remove(bin);
+            Debug.Log("trash bin " + bin.gameObject.name + "REMOVED to list.");
         }
     }
 
@@ -218,7 +232,8 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator MoveToLootTrash(TrashBin trash, float travelTime, float waitTime)
     {
-        Debug.Log("moving to loot trash");
+        _binList.Clear();
+        Debug.Log("Moving to LOOT " + trash.gameObject.name);
         // Moving to trash can position
         Vector3 oldPosition = transform.position;
         float elapsed = 0;
@@ -241,6 +256,8 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator MoveToLightTrash(TrashBin trash, float travelTime)
     {
+        _binList.Clear();
+        Debug.Log("Moving to LIGHT " + trash.gameObject.name);
         trash.Burn();
         // Moving to trash can position
         Vector3 oldPosition = transform.position;
@@ -256,7 +273,7 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator LootTrash(TrashBin trash, float waitTime)
     {
-        Debug.Log("Looting trash");
+        //Debug.Log("Looting trash");
         trash.EmptyBin();
         isDigging = true;
         while(waitTime > 0 && Input.GetKey(_lootTrash))
