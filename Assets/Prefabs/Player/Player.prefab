@@ -778,7 +778,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _visualsToDeactivate: {fileID: 319867217108693306}
   _field: {fileID: 1863883424}
-  _currentHealth: 2
+  _currentHealth: 250
 --- !u!1 &8681158410705053755
 GameObject:
   m_ObjectHideFlags: 0
