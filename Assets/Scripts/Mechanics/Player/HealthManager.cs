@@ -52,7 +52,6 @@ public class HealthManager : MonoBehaviour
         DisableDeathObjects();
         _playerIsDead = true;
         _hudMngr.PlayDeathFX();
-        StartCoroutine(CameraShake(_duration, _magnitude));
     }
 
     private void DisableDeathObjects()
@@ -62,7 +61,7 @@ public class HealthManager : MonoBehaviour
         Destroy(_rigidBody);
     }
 
-    IEnumerator CameraShake(float duration, float magnitude)
+    /*IEnumerator CameraShake(float duration, float magnitude)
     {
         Debug.Log("shaking");
         Vector2 originalPos = transform.localPosition;
@@ -84,5 +83,5 @@ public class HealthManager : MonoBehaviour
         transform.localPosition = originalPos;
 
         SceneManager.LoadScene(2);
-    }
+    }*/
 }
