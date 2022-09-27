@@ -11,6 +11,7 @@ public class HUDManager : MonoBehaviour
     [SerializeField] MaskableGraphic _graphic = null;
     [SerializeField] Slider _healthBar;
     [SerializeField] Slider _trashProgressbar;
+    [SerializeField] ScoreAndHealthPopUp _popUp;
     bool _exitTrashEarly = false;
 
     HealthManager _healthMngr;
@@ -36,12 +37,26 @@ public class HUDManager : MonoBehaviour
         {
             _score = ScoreManager._scoreOutput;
             UpdateScoreText(_score);
+            if (_score != 0)
+            {
+                ActivateScorePopUp();
+            }
         }
     }
 
     public void UpdateScoreText(int score)
     {
         _currentScoreText.text = string.Format("{0:000000}", score);
+    }
+
+    public void ActivateScorePopUp()
+    {
+        _popUp.DisplayScoreUpdate(100, true);
+    }
+
+    public void ActivateHPDecreasePopUp()
+    {
+        _popUp.DisplayScoreUpdate(1, false);
     }
 
     private void SetMaxHealth()
@@ -53,6 +68,7 @@ public class HUDManager : MonoBehaviour
     public void SetHealth(int health)
     {
         _healthBar.value = health;
+        ActivateHPDecreasePopUp();
     }
 
     public void StartTrashProgressBar(float duration)
