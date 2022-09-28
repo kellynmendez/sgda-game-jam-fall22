@@ -39,7 +39,11 @@ public class TrashBin : MonoBehaviour
         pLight = gameObject.GetComponent<Light>();
         pLight.enabled = false;
         bLight = Instantiate(binLight, this.transform.position, Quaternion.Euler(90f,0f,0f));
+        /*Vector3 _lightPos = bLight.transform.position;
+        _lightPos.z = 0;
+        bLight.transform.position = _lightPos;*/
         bLight.transform.parent = transform;
+        
         bLight.SetActive(false);
         _TEMP = gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>();
 
@@ -49,6 +53,7 @@ public class TrashBin : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (state != BinState.Full)
         {
             timer -= Time.deltaTime;
