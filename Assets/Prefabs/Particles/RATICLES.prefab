@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8045306885492983176}
   - component: {fileID: 8045306885492983177}
   - component: {fileID: 2445118920503140385}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: RATICLES
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -119,7 +119,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 60
+      scalar: 150
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -3735,7 +3735,7 @@ ParticleSystem:
     m_EnergyLossOnCollision:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.15
+      scalar: 1
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -3790,9 +3790,9 @@ ParticleSystem:
     radiusScale: 1
     collidesWith:
       serializedVersion: 2
-      m_Bits: 192
+      m_Bits: 448
     maxCollisionShapes: 256
-    quality: 0
+    quality: 1
     voxelSize: 0.5
     collisionMessages: 0
     collidesWithDynamic: 1
@@ -3801,7 +3801,7 @@ ParticleSystem:
     enabled: 1
     serializedVersion: 2
     inside: 0
-    outside: 2
+    outside: 0
     enter: 2
     exit: 0
     colliderQueryMode: 0
@@ -4830,7 +4830,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d0e4ca6e5e1180499083824aec82316, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 0}
   _atk: {fileID: 0}
 --- !u!114 &2445118920503140385
 MonoBehaviour:
