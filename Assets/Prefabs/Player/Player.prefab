@@ -745,9 +745,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxVelocity: 8.5
-  acceleration: 140
+  timeToMaxVelocity: 0.35
   _deathParticles: {fileID: 4016476999884815281}
   velocity: {x: 0, y: 0, z: 0}
+  acceleration: 140
 --- !u!114 &6105894987492174576
 MonoBehaviour:
   m_ObjectHideFlags: 0

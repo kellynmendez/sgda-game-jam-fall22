@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,7 +6,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] float maxVelocity = 5f;
-    [SerializeField] float acceleration = 1f;
+    [SerializeField] float timeToMaxVelocity = 0.75f;
 
     [SerializeField] ParticleSystem _deathParticles = null;
 
@@ -18,6 +19,8 @@ public class PlayerController : MonoBehaviour
 
     List<TrashBin> _binList;
 
+    public float acceleration = 1f;
+    float velocityMargin = 0.25f;
     float dragCoefficent = 0.5f;
     float appliedAccelerationX = 0f;
     float appliedAccelerationY = 0f;
@@ -36,7 +39,8 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        dragCoefficent = acceleration/maxVelocity;
+        acceleration = maxVelocity / timeToMaxVelocity * lambertW(maxVelocity / (velocityMargin));
+        dragCoefficent = acceleration / maxVelocity;
         body = GetComponent<Rigidbody2D>();
         _healthMgr = GetComponent<HealthManager>();
         _binList = new List<TrashBin>();
@@ -163,9 +167,14 @@ public class PlayerController : MonoBehaviour
         {
             if (state == PlayerState.FreeRoam)
             {
-                dragCoefficent = acceleration / maxVelocity;
                 velocity.x = velocity.x + (appliedAccelerationX - velocity.x * dragCoefficent) * Time.fixedDeltaTime;
                 velocity.y = velocity.y + (appliedAccelerationY - velocity.y * dragCoefficent) * Time.fixedDeltaTime;
+
+                if (velocity.magnitude < velocityMargin)
+                    velocity = Vector3.zero;
+                if (maxVelocity - velocity.magnitude < velocityMargin)
+                    velocity = velocity.normalized * maxVelocity;
+
                 body.velocity = velocity;
             }
         }
@@ -299,5 +308,26 @@ public class PlayerController : MonoBehaviour
         }
 
         state = PlayerState.FreeRoam;// Changing state back to roam
+    }
+
+    private float lambertW(float x)
+    {
+        // LambertW is not defined in this section
+        if (x < -Math.Exp(-1))
+            throw new Exception("The LambertW-function is not defined for " + x + ".");
+
+        // computes the first branch for real values only
+
+        // amount of iterations (empirically found)
+        int amountOfIterations = Mathf.Max(4, (int)Mathf.Ceil(Mathf.Log10(x) / 3));
+
+        // initial guess is based on 0 < ln(a) < 3
+        float w = 3 * Mathf.Log(x + 1) / 4;
+
+        // Halley's method via eqn (5.9) in Corless et al (1996)
+        for (int i = 0; i < amountOfIterations; i++)
+            w = w - (w * Mathf.Exp(w) - x) / (Mathf.Exp(w) * (w + 1) - (w + 2) * (w * Mathf.Exp(w) - x) / (2 * w + 2));
+
+        return w;
     }
 }
