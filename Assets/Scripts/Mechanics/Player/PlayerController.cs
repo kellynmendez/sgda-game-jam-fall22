@@ -174,7 +174,7 @@ public class PlayerController : MonoBehaviour
                     velocity = Vector3.zero;
                 if (maxVelocity - velocity.magnitude < velocityMargin)
                     velocity = velocity.normalized * maxVelocity;
-
+                    
                 body.velocity = velocity;
             }
         }
