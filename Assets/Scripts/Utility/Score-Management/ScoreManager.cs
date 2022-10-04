@@ -29,4 +29,10 @@ public class ScoreManager : MonoBehaviour
         _scoreOutput += (n * _scaleFactor);
         
     }
+
+    public static void ResetScore()
+    {
+        score = 0;
+        _scoreOutput = 0;
+    }
 }

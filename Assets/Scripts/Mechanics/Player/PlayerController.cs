@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     List<TrashBin> _binList;
 
     public float acceleration = 1f;
-    float velocityMargin = 0.25f;
+    float velocityMargin = 0.5f;
     float dragCoefficent = 0.5f;
     float appliedAccelerationX = 0f;
     float appliedAccelerationY = 0f;

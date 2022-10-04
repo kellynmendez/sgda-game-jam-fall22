@@ -51,6 +51,7 @@ public class HealthManager : MonoBehaviour
     {
         DisableDeathObjects();
         _playerIsDead = true;
+        ScoreManager.ResetScore();
         _hudMngr.PlayDeathFX();
     }
 
