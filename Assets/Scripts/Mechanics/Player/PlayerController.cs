@@ -164,8 +164,9 @@ public class PlayerController : MonoBehaviour
             if (state == PlayerState.FreeRoam)
             {
                 dragCoefficent = acceleration / maxVelocity;
-                velocity.x = velocity.x + (appliedAccelerationX - velocity.x * dragCoefficent) * Time.fixedDeltaTime;
-                velocity.y = velocity.y + (appliedAccelerationY - velocity.y * dragCoefficent) * Time.fixedDeltaTime;
+                Vector2 accelerationVector = new Vector2(appliedAccelerationX, appliedAccelerationY).normalized * acceleration;
+                velocity.x = velocity.x + (accelerationVector.x - velocity.x * dragCoefficent) * Time.fixedDeltaTime;
+                velocity.y = velocity.y + (accelerationVector.y - velocity.y * dragCoefficent) * Time.fixedDeltaTime;
                 body.velocity = velocity;
             }
         }
