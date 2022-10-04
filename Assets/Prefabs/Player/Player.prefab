@@ -762,7 +762,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meleeAttack: {fileID: 6380405823749342074, guid: bd742ffb7f0465c439a509949355340c, type: 3}
-  range: 1
+  range: 2
   attackDuration: 0.1
   cooldownDuration: 0.2
 --- !u!114 &118358260320639868

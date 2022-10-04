@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PlayerAttack : MonoBehaviour
 {
@@ -33,38 +34,40 @@ public class PlayerAttack : MonoBehaviour
             Vector3 spawnPoint = playerMov.velocity.normalized * range;
 
             if (spawnPoint == Vector3.zero)
-            spawnPoint = lastValidSpawn-transform.position;
+                spawnPoint = lastValidSpawn-transform.position;
             float angle = Mathf.Atan2(spawnPoint.y, spawnPoint.x) * Mathf.Rad2Deg;
 
             spawnPoint = transform.position + spawnPoint;
             lastValidSpawn = spawnPoint;
             GameObject attackInstance = Instantiate(meleeAttack, spawnPoint, Quaternion.Euler(new Vector3(0, 0, angle)));
 
+            float offset = 0.5f;
+
             if (angle <= 135 && angle >= 45)
             { attackInstance.GetComponent<SpriteRenderer>().flipY = false;
                 Vector3 temp = attackInstance.transform.position;
-                temp = new Vector3(temp.x, temp.y + 1, temp.z);
+                temp = new Vector3(temp.x + offset, temp.y + range, temp.z);
                 attackInstance.transform.position = temp;
                     }
 
             if (angle <= -45 && angle >= -135)
             { attackInstance.GetComponent<SpriteRenderer>().flipY = true;
                 Vector3 temp = attackInstance.transform.position;
-                temp = new Vector3(temp.x, temp.y - 1   , temp.z);
+                temp = new Vector3(temp.x + offset, temp.y - range, temp.z);
                 attackInstance.transform.position = temp;
             }
             if (angle >= 135 && angle <= 180 || angle <= -135 && angle >= -180)
             { 
                 attackInstance.GetComponent<SpriteRenderer>().flipY = true;
                 Vector3 temp = attackInstance.transform.position;
-                temp = new Vector3(temp.x - 1, temp.y, temp.z);
+                temp = new Vector3(temp.x - range, temp.y - offset, temp.z);
                 attackInstance.transform.position = temp;
             }
             if (angle <= 45 && angle >= 0 || angle >= -45 && angle <= 0)
             {
                 attackInstance.GetComponent<SpriteRenderer>().flipX = true;
                 Vector3 temp = attackInstance.transform.position;
-                temp = new Vector3(temp.x + 1, temp.y, temp.z);
+                temp = new Vector3(temp.x + range, temp.y - offset, temp.z);
                 attackInstance.transform.position = temp;
             }
 
